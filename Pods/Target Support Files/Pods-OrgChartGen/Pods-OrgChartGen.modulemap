@@ -1,0 +1,6 @@
+framework module Pods_OrgChartGen {
+  umbrella header "Pods-OrgChartGen-umbrella.h"
+
+  export *
+  module * { export * }
+}

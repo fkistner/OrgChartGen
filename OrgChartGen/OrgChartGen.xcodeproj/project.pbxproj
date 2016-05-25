@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17CF8AF51CF52B9E0057312D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8AF41CF52B9E0057312D /* AppDelegate.swift */; };
+		17CF8AF71CF52B9E0057312D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8AF61CF52B9E0057312D /* ViewController.swift */; };
+		17CF8AF91CF52B9F0057312D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17CF8AF81CF52B9F0057312D /* Assets.xcassets */; };
+		17CF8AFC1CF52B9F0057312D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17CF8AFA1CF52B9F0057312D /* Main.storyboard */; };
+		17CF8B061CF52CD20057312D /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8B041CF52CD20057312D /* Team.swift */; };
+		17CF8B091CF52DCA0057312D /* org_chart.css in Resources */ = {isa = PBXBuildFile; fileRef = 17CF8B071CF52DCA0057312D /* org_chart.css */; };
+		17CF8B0A1CF52DCA0057312D /* org_chart.htm in Resources */ = {isa = PBXBuildFile; fileRef = 17CF8B081CF52DCA0057312D /* org_chart.htm */; };
+		5A47ABA1D62A2114E9DE6B1F /* Pods_OrgChartGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B259B59F8F9462ED13164B7E /* Pods_OrgChartGen.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		17CF8AF11CF52B9E0057312D /* OrgChartGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrgChartGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17CF8AF41CF52B9E0057312D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		17CF8AF61CF52B9E0057312D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		17CF8AF81CF52B9F0057312D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17CF8AFB1CF52B9F0057312D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		17CF8AFD1CF52B9F0057312D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17CF8B041CF52CD20057312D /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		17CF8B071CF52DCA0057312D /* org_chart.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = org_chart.css; sourceTree = "<group>"; };
+		17CF8B081CF52DCA0057312D /* org_chart.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = org_chart.htm; sourceTree = "<group>"; };
+		7B5E76263B708777F3B50A80 /* Pods-OrgChartGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrgChartGen.release.xcconfig"; path = "../Pods/Target Support Files/Pods-OrgChartGen/Pods-OrgChartGen.release.xcconfig"; sourceTree = "<group>"; };
+		8736D3D816629B4346124670 /* Pods-OrgChartGen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrgChartGen.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-OrgChartGen/Pods-OrgChartGen.debug.xcconfig"; sourceTree = "<group>"; };
+		B259B59F8F9462ED13164B7E /* Pods_OrgChartGen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrgChartGen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17CF8AEE1CF52B9E0057312D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A47ABA1D62A2114E9DE6B1F /* Pods_OrgChartGen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0EEE70EC974CD8B7476EEBB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8736D3D816629B4346124670 /* Pods-OrgChartGen.debug.xcconfig */,
+				7B5E76263B708777F3B50A80 /* Pods-OrgChartGen.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		172CBEEE1CF658C500EEE433 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				17CF8B071CF52DCA0057312D /* org_chart.css */,
+				17CF8B081CF52DCA0057312D /* org_chart.htm */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
+		172CBEEF1CF658CE00EEE433 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				17CF8B041CF52CD20057312D /* Team.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		172CBEF01CF658F100EEE433 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				17CF8AF81CF52B9F0057312D /* Assets.xcassets */,
+				17CF8AFA1CF52B9F0057312D /* Main.storyboard */,
+				17CF8AFD1CF52B9F0057312D /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		172CBEF11CF658FA00EEE433 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				17CF8AF41CF52B9E0057312D /* AppDelegate.swift */,
+				17CF8AF61CF52B9E0057312D /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		17CF8AE81CF52B9E0057312D = {
+			isa = PBXGroup;
+			children = (
+				17CF8AF31CF52B9E0057312D /* OrgChartGen */,
+				17CF8AF21CF52B9E0057312D /* Products */,
+				0EEE70EC974CD8B7476EEBB9 /* Pods */,
+				7017AD400658936626585FB7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		17CF8AF21CF52B9E0057312D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17CF8AF11CF52B9E0057312D /* OrgChartGen.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17CF8AF31CF52B9E0057312D /* OrgChartGen */ = {
+			isa = PBXGroup;
+			children = (
+				172CBEEE1CF658C500EEE433 /* Templates */,
+				172CBEEF1CF658CE00EEE433 /* Model */,
+				172CBEF11CF658FA00EEE433 /* Controller */,
+				172CBEF01CF658F100EEE433 /* Resources */,
+			);
+			name = OrgChartGen;
+			sourceTree = SOURCE_ROOT;
+		};
+		7017AD400658936626585FB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B259B59F8F9462ED13164B7E /* Pods_OrgChartGen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17CF8AF01CF52B9E0057312D /* OrgChartGen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17CF8B001CF52B9F0057312D /* Build configuration list for PBXNativeTarget "OrgChartGen" */;
+			buildPhases = (
+				BEEB89784E3D3240C2630EA3 /* 📦 Check Pods Manifest.lock */,
+				17CF8AED1CF52B9E0057312D /* Sources */,
+				17CF8AEE1CF52B9E0057312D /* Frameworks */,
+				17CF8AEF1CF52B9E0057312D /* Resources */,
+				2A8EC21B4FC2BC64536874FC /* 📦 Embed Pods Frameworks */,
+				57B1F073E1228B897E4F95A4 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OrgChartGen;
+			productName = OrgChartGen;
+			productReference = 17CF8AF11CF52B9E0057312D /* OrgChartGen.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17CF8AE91CF52B9E0057312D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Florian Kistner";
+				TargetAttributes = {
+					17CF8AF01CF52B9E0057312D = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 17CF8AEC1CF52B9E0057312D /* Build configuration list for PBXProject "OrgChartGen" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17CF8AE81CF52B9E0057312D;
+			productRefGroup = 17CF8AF21CF52B9E0057312D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17CF8AF01CF52B9E0057312D /* OrgChartGen */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17CF8AEF1CF52B9E0057312D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CF8B091CF52DCA0057312D /* org_chart.css in Resources */,
+				17CF8AF91CF52B9F0057312D /* Assets.xcassets in Resources */,
+				17CF8AFC1CF52B9F0057312D /* Main.storyboard in Resources */,
+				17CF8B0A1CF52DCA0057312D /* org_chart.htm in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A8EC21B4FC2BC64536874FC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-OrgChartGen/Pods-OrgChartGen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57B1F073E1228B897E4F95A4 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-OrgChartGen/Pods-OrgChartGen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEEB89784E3D3240C2630EA3 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17CF8AED1CF52B9E0057312D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CF8B061CF52CD20057312D /* Team.swift in Sources */,
+				17CF8AF71CF52B9E0057312D /* ViewController.swift in Sources */,
+				17CF8AF51CF52B9E0057312D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		17CF8AFA1CF52B9F0057312D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17CF8AFB1CF52B9F0057312D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		17CF8AFE1CF52B9F0057312D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		17CF8AFF1CF52B9F0057312D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		17CF8B011CF52B9F0057312D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8736D3D816629B4346124670 /* Pods-OrgChartGen.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fkistner.OrgChartGen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		17CF8B021CF52B9F0057312D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B5E76263B708777F3B50A80 /* Pods-OrgChartGen.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fkistner.OrgChartGen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17CF8AEC1CF52B9E0057312D /* Build configuration list for PBXProject "OrgChartGen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17CF8AFE1CF52B9F0057312D /* Debug */,
+				17CF8AFF1CF52B9F0057312D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17CF8B001CF52B9F0057312D /* Build configuration list for PBXNativeTarget "OrgChartGen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17CF8B011CF52B9F0057312D /* Debug */,
+				17CF8B021CF52B9F0057312D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17CF8AE91CF52B9E0057312D /* Project object */;
+}

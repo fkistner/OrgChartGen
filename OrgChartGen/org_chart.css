@@ -1,0 +1,123 @@
+* {
+	font-family: "Helvetica Neue", "Helvetica";
+	font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+header {
+	width: calc(100% - 40px);
+	display: table;
+	margin: 20px 20px 40px 20px;
+}
+
+header > div, header > h1 {
+	display: table-cell;
+}
+
+header > * > * {
+    display: inline-block;
+}
+
+h1 {
+	text-align: center;
+	font-size: 48px;
+	font-weight: 400;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.teams {
+/*    display: table;*/
+	/*display: table-column !important;*/
+}
+
+.teams > div {
+/*	display: table-row;*/
+	position: relative;
+/*    vertical-align: top;*/
+}
+
+.teams > div > div {
+/*	display: table-cell;*/
+	position: relative;
+	display: inline-block;
+	margin: 0px 20px;
+	padding: 20px;
+	width: 220px;
+    height: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.teams > div > div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+img {
+    max-width: 180px;
+    max-height: 60px;
+}
+
+p {
+    clear: both;
+}
+
+.teamrow img {
+    border: none !important;
+}
+
+.teamrow > div::before {
+	opacity: 0;
+}
+
+.graybox {
+	background: rgba(0, 0, 0, .1);
+	border: rgba(0, 0, 0, .5) solid 3px;
+    border-top: none;
+    border-bottom: none;
+	padding: 20px;
+}
+
+.graybox img {
+    float: left;
+    border: rgba(0, 0, 0, .25) solid 1px;
+}
+
+.overlay {
+	position: absolute;
+	left: 0;
+	top: 10px;
+	right: 0;
+	bottom: 10px;
+	margin: 0px 20px;
+    z-index: 1;
+}
+
+{{# each(teams) }}
+
+.teams > div > div:nth-child({{ @indexPlusOne }}) {
+    border-left: rgba({{ color }}, 1) solid 3px;
+}
+.teams > div > div:nth-child({{ @indexPlusOne }})::before {
+    background: rgba({{ color }}, .30);
+}
+.teams > div > div:nth-child({{ @indexPlusOne }}) img {
+    border: rgba(0, 0, 0, .25) solid 1px;
+}
+
+{{/ each(teams) }}
