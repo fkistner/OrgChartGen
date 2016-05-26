@@ -84,14 +84,14 @@ img {
 
 .teamrow img {
     float: none !important;
-    width: 240px;
+    width: 220px;
     object-fit: contain;
     border: none !important;
     margin: 0 auto !important;
 }
 
 .teamrow > div::before {
-	opacity: 0;
+    background: none !important;
 }
 
 .customer, .coach, .pl {
