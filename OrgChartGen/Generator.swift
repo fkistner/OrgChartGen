@@ -17,11 +17,16 @@ extension Array: Initializable {}
 extension Dictionary: Initializable {}
 
 class HTMLGenerator {
+    let baseURL: NSURL
+    let baseComponents: [String]
+    
     let picturesTeamsURL: NSURL
     let picturesProgramManagersURL: NSURL
     let logosURL: NSURL
     
     init(_ inURL: NSURL) {
+        baseURL = inURL
+        baseComponents = baseURL.pathComponents ?? []
         picturesTeamsURL = inURL.URLByAppendingPathComponent("pictures/Teams")
         picturesProgramManagersURL = inURL.URLByAppendingPathComponent("pictures/Program Management")
         logosURL = inURL.URLByAppendingPathComponent("logos")
@@ -68,14 +73,43 @@ class HTMLGenerator {
         return nameParts.count > 0 ? nameParts : [fileName]
     }
     
+    func resolveRelativeComponents(components: [String]) -> [String] {
+        let totalLength  = max(self.baseComponents.count, components.count)
+        
+        var baseComponents: [String?] = self.baseComponents.map { $0 }
+        baseComponents.appendContentsOf(Repeat(count: totalLength - self.baseComponents.count, repeatedValue: nil))
+        var components: [String?] = components.map { $0 }
+        components.appendContentsOf(Repeat(count: totalLength - components.count, repeatedValue: nil))
+        
+        var common = true
+        var up = [String]()
+        var down = [String]()
+        
+        for (b,c) in zip(baseComponents, components) {
+            if b != c {
+                common = false
+            }
+            if !common, let _ = b {
+                up.append("..")
+            }
+            if !common, let c = c {
+                down.append(c)
+            }
+        }
+        return up + down
+    }
+    
     private func enumerateFs<T where T: Initializable>(url: NSURL, descend: Bool = false, action: (T,NSURL) -> T) -> T {
+        let relativeComponents = resolveRelativeComponents(url.pathComponents!)
         let memberEnumerator = NSFileManager.defaultManager()
             .enumeratorAtURL(url, includingPropertiesForKeys: [NSURLIsDirectoryKey], options: [.SkipsHiddenFiles, .SkipsSubdirectoryDescendants], errorHandler: nil)
         
         return memberEnumerator?.reduce(T()) { members,memberURL in
             let memberURL = memberURL as! NSURL
-            return action(members, memberURL)
-            } ?? T()
+            let components = relativeComponents + memberURL.pathComponents!.dropFirst(url.pathComponents!.count)
+            let relURL = NSURL(fileURLWithPath: NSString.pathWithComponents(components), relativeToURL: baseURL)
+            return action(members, relURL)
+        } ?? T()
     }
     
     func enumerateLogos(logosURL: NSURL) -> [String: String] {
@@ -83,7 +117,7 @@ class HTMLGenerator {
             if !logoURL.hasDirectoryPath {
                 var logos = logos
                 let name = self.extractName(logoURL.URLByDeletingPathExtension!.lastPathComponent!)
-                logos[name.first!] = logoURL.absoluteString
+                logos[name.first!] = logoURL.relativeString!
                 return logos
             }
             return logos
@@ -95,7 +129,7 @@ class HTMLGenerator {
             if !memberURL.hasDirectoryPath {
                 var members = members
                 let name = self.extractName(memberURL.URLByDeletingPathExtension!.lastPathComponent!)
-                let member = Member(name: name.first!, teamname: name.count > 1 ? name[1] : nil, imagePath: memberURL.absoluteString)
+                let member = Member(name: name.first!, teamname: name.count > 1 ? name[1] : nil, imagePath: memberURL.relativeString!)
                 members.append(member)
                 return members
             }
