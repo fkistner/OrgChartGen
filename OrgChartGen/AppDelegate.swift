@@ -20,8 +20,6 @@ extension Dictionary: Initializable {}
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         
@@ -57,14 +55,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let cssTemplate = try! cssRepo.template(named: "org_chart")
         cssTemplate.registerInBaseContext("each", Box(StandardLibrary.each))
         
-//        let atFilter = Filter({ (box: MustacheBox) -> MustacheBox in
-//            if let intValue = box.value as? Int {
-//                return Box(intValue + 1)
-//            }
-//            return box
-//        })
-//        cssTemplate.registerInBaseContext("at", Box(atFilter))
-        
         let htmlRendered = try! htmlTemplate.render(box)
         let cssRendered = try! cssTemplate.render(box)
         
@@ -78,26 +68,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         exit(0)
     }
     
-    let labColorspace = NSColorSpace(ICCProfileData: NSData(contentsOfFile: "/System/Library/ColorSync/Profiles/Generic Lab Profile.icc")!)!
-    let srgbColorspace = CGColorSpaceCreateWithName(kCGColorSpaceSRGB)
-    
-    func randomLabColor() -> NSColor {
-        let colors = [
-            0.7,
-            CGFloat(Int32(bitPattern: arc4random())) / CGFloat(Int32.max),
-            CGFloat(Int32(bitPattern: arc4random())) / CGFloat(Int32.max),
-            1.0
-        ]
-        return colors.withUnsafeBufferPointer { p in
-            return NSColor(colorSpace: labColorspace, components: colors, count: colors.count)
-        }
-    }
-    
     func genPalette(noColors: Int) -> [String] {
         return (0..<noColors).map { i in
             let color = NSColor(deviceHue: CGFloat(i)/CGFloat(noColors), saturation: 0.4, brightness: 1.0, alpha: 1.0)
             return "\(Int(round(color.redComponent * 255))),\(Int(round(color.greenComponent * 255))),\(Int(round(color.blueComponent * 255)))"
         }
+    }
+    
+    func extractName(fileName: String) -> [String] {
+        let nameParts = Array(fileName.characters.split { $0 == "_" }
+            .lazy.dropFirst().map(String.init))
+        return nameParts.count > 0 ? nameParts : [fileName]
     }
     
     func enumerateFs<T where T: Initializable>(url: NSURL, descend: Bool = false, action: (T,NSURL) -> T) -> T {
@@ -114,7 +95,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return enumerateFs(logosURL) { (logos: [String: String], logoURL: NSURL) in
             if !logoURL.hasDirectoryPath {
                 var logos = logos
-                logos[logoURL.URLByDeletingPathExtension!.lastPathComponent!] = logoURL.absoluteString
+                let name = self.extractName(logoURL.URLByDeletingPathExtension!.lastPathComponent!)
+                logos[name.first!] = logoURL.absoluteString
                 return logos
             }
             return logos
@@ -125,7 +107,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return enumerateFs(partURL) { (members: [Member], memberURL: NSURL) in
             if !memberURL.hasDirectoryPath {
                 var members = members
-                let member = Member(name: memberURL.URLByDeletingPathExtension!.lastPathComponent!, imagePath: memberURL.absoluteString)
+                let name = self.extractName(memberURL.URLByDeletingPathExtension!.lastPathComponent!)
+                let member = Member(name: name.first!, teamname: name.count > 1 ? name[1] : nil, imagePath: memberURL.absoluteString)
                 members.append(member)
                 return members
             }
@@ -150,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if teamURL.hasDirectoryPath {
                 var teams = teams
                 let parts = self.enumerateParts(teamURL)
-                let name = teamURL.lastPathComponent!
+                let name = self.extractName(teamURL.lastPathComponent!).first!
                 let team = Team(name: name,
                                 logoPath: logos[name],
                                 customers:       parts["1_Customer"]!,

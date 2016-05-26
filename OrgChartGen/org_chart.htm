@@ -12,18 +12,18 @@
   <div class="teamrow">{{# teams }}<div><img src="{{ logoPath }}"></div>{{/ teams }}</div>
   <div>
       {{# teams }}
-      <div>{{# customers }}<p><img src="{{ imagePath }}">{{ name }}</p>{{/ customers }}</div>
+      <div>{{# customers }}<p><img src="{{ imagePath }}"><span class="pl">{{ name }}</span><br>{{ teamname }}</p>{{/ customers }}</div>
       {{/ teams }}
   </div>
   <div>{{# teams }}<div><h2>Project Management</h2></div>{{/ teams }}</div>
   <div>
       {{# teams }}
-      <div>{{# projectLeaders }}<p><img src="{{ imagePath }}">{{ name }}</p>{{/ projectLeaders }}</div>
+      <div>{{# projectLeaders }}<p><img src="{{ imagePath }}"><span class="pl">{{ name }}</span><br>Project Leader</p>{{/ projectLeaders }}</div>
       {{/ teams }}
   </div>
   <div>
       {{# teams }}
-      <div>{{# coaches }}<p><img src="{{ imagePath }}">{{ name }}</p>{{/ coaches }}</div>
+      <div>{{# coaches }}<p><img src="{{ imagePath }}"><span class="coach">{{ name }}</span><br>Team Coach</p>{{/ coaches }}</div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
   </div>

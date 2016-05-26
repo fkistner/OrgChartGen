@@ -6,8 +6,8 @@
 }
 
 body {
+    position: relative;
     display: inline-block;
-    white-space: nowrap;
 }
 
 header {
@@ -35,27 +35,28 @@ h2 {
     margin-top: 20px;
 }
 
+img {
+    height: 60px;
+}
+
 .teams {
-/*    display: table;*/
-	/*display: table-column !important;*/
+    display: table;
+    border-spacing: 20px 0;
 }
 
 .teams > div {
-/*	display: table-row;*/
-	position: relative;
-/*    vertical-align: top;*/
+	display: table-row;
 }
 
 .teams > div > div {
-/*	display: table-cell;*/
+	display: table-cell;
 	position: relative;
-	display: inline-block;
-	margin: 0px 20px;
-	padding: 20px;
+	padding: 10px;
 	width: 220px;
-    height: 100%;
+    min-width: 220px;
     word-wrap: break-word;
-    white-space: normal;
+    vertical-align: top;
+    text-align: center;
 }
 
 .teams > div > div::before {
@@ -65,24 +66,36 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -2;
 }
 
-img {
-    max-width: 180px;
-    max-height: 60px;
+.teams > div > div > p {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 220px;
+    height: 60px;
+    padding: 10px;
 }
 
-p {
-    clear: both;
+.teamrow > div {
+    padding: 10px !important;
 }
 
 .teamrow img {
+    float: none !important;
+    width: 240px;
+    object-fit: contain;
     border: none !important;
+    margin: 0 auto !important;
 }
 
 .teamrow > div::before {
 	opacity: 0;
+}
+
+.customer, .coach, .pl {
+    font-weight: 500;
 }
 
 .graybox {
@@ -99,25 +112,34 @@ p {
 }
 
 .overlay {
-	position: absolute;
+	position: absolute !important;
 	left: 0;
-	top: 10px;
-	right: 0;
-	bottom: 10px;
-	margin: 0px 20px;
-    z-index: 1;
+    right: 0;
+    height: 60px;
+	margin: 8px 20px;
+    padding: 12px;
+    z-index: -1;
+}
+
+.teams > div > div img {
+    float: left;
+    border: rgba(0, 0, 0, .25) solid 1px;
+    margin-right: 10px;
+}
+
+.teams > div > div:nth-child(11) {
+    width: 480px;
+    min-width: 480px;
 }
 
 {{# each(teams) }}
 
 .teams > div > div:nth-child({{ @indexPlusOne }}) {
-    border-left: rgba({{ color }}, 1) solid 3px;
+    
 }
 .teams > div > div:nth-child({{ @indexPlusOne }})::before {
     background: rgba({{ color }}, .30);
-}
-.teams > div > div:nth-child({{ @indexPlusOne }}) img {
-    border: rgba(0, 0, 0, .25) solid 1px;
+    border-left: rgba({{ color }}, 1) solid 3px;
 }
 
 {{/ each(teams) }}

@@ -51,7 +51,7 @@ func PivotBox(teams: [Team]) -> MustacheBox {
 extension Team : MustacheBoxable {
     var mustacheBox: MustacheBox {
         var props: [String: AnyObject] = [
-            "name": name,
+            "teamname": name,
             "customers": customers,
             "projectLeaders": projectLeaders,
             "coaches": coaches,
@@ -72,19 +72,25 @@ extension Team : MustacheBoxable {
 
 class Member {
     let name: String
+    let teamname: String?
     let imagePath: String
     
-    init(name: String, imagePath: String) {
+    init(name: String, teamname: String?, imagePath: String) {
         self.name = name
+        self.teamname = teamname
         self.imagePath = imagePath
     }
 }
 
 extension Member : MustacheBoxable {
     var mustacheBox: MustacheBox {
-        return Box([
+        var props: [String: AnyObject] = [
             "name": name,
             "imagePath": imagePath
-        ])
+        ]
+        if let teamname = teamname {
+            props["teamname"] = teamname
+        }
+        return Box(props)
     }
 }
