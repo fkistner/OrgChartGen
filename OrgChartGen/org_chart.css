@@ -3,17 +3,19 @@
 	font-size: 13pt;
     margin: 0;
     padding: 0;
+    word-wrap: break-word;
 }
 
 body {
     position: relative;
     display: inline-block;
+    padding: 20px;
 }
 
 header {
 	width: calc(100% - 40px);
 	display: table;
-	margin: 20px 20px 40px 20px;
+    margin-bottom: 20px;
 }
 
 header > div, header > h1 {
@@ -42,6 +44,7 @@ img {
 .teams {
     display: table;
     border-spacing: 20px 0;
+    margin: 0 -20px;
 }
 
 .teams > div {
@@ -54,7 +57,6 @@ img {
 	padding: 10px;
 	width: 220px;
     min-width: 220px;
-    word-wrap: break-word;
     vertical-align: top;
     text-align: center;
 }
@@ -69,9 +71,9 @@ img {
     z-index: -2;
 }
 
-.teams > div > div > p {
+div > p {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
     text-align: left;
     width: 220px;
     height: 60px;
@@ -109,9 +111,8 @@ img {
 	padding: 20px;
 }
 
-.graybox img {
-    float: left;
-    border: rgba(0, 0, 0, .25) solid 1px;
+.graybox p {
+    width: initial;
 }
 
 .overlay {
@@ -124,7 +125,7 @@ img {
     z-index: -1;
 }
 
-.teams > div > div img {
+div img {
     float: left;
     border: rgba(0, 0, 0, .25) solid 1px;
     margin-right: 10px;
