@@ -39,7 +39,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# modelingManagers }}<p><img src="{{ imagePath }}">{{ name }}{{# role }}<br>{{.}}{{/ role }}</p>{{/ modelingManagers }}
+          {{# modelingManagers }}<p><img src="{{ imagePath }}"><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ modelingManagers }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
@@ -47,7 +47,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# releaseManagers }}<p><img src="{{ imagePath }}">{{ name }}{{# role }}<br>{{.}}{{/ role }}</p>{{/ releaseManagers }}
+          {{# releaseManagers }}<p><img src="{{ imagePath }}"><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ releaseManagers }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
@@ -55,7 +55,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# mergeManagers }}<p><img src="{{ imagePath }}">{{ name }}{{# role }}<br>{{.}}{{/ role }}</p>{{/ mergeManagers }}
+          {{# mergeManagers }}<p><img src="{{ imagePath }}"><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ mergeManagers }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>

@@ -98,6 +98,9 @@ img {
     font-weight: 500;
 }
 
+.crossproject {
+}
+
 .graybox {
 	background: rgba(0, 0, 0, .1);
 	border: rgba(0, 0, 0, .5) solid 3px;
