@@ -16,6 +16,44 @@ private protocol Initializable {
 extension Array: Initializable {}
 extension Dictionary: Initializable {}
 
+enum Part {
+    case Customer, ProjectLeader, Coach, Modeling, ReleaseMgmt, MergeMgmt, Team
+}
+
+extension Part {
+    var defaultRole: String? {
+        switch self {
+        case .ProjectLeader:
+            return "Project Leader"
+        case .Coach:
+            return "Team Coach"
+        default:
+            return nil
+        }
+    }
+    
+    init?(directoryName name: String) {
+        switch name {
+        case "1_Customer":
+            self = .Customer
+        case "2_Project Leader":
+            self = .ProjectLeader
+        case "3_Coach":
+            self = .Coach
+        case "4_Modeling":
+            self = .Modeling
+        case "5_Release Mgmt":
+            self = .ReleaseMgmt
+        case "6_Merge Mgmt":
+            self = .MergeMgmt
+        case "9_Team":
+            self = .Team
+        default:
+            return nil
+        }
+    }
+}
+
 class HTMLGenerator {
     let baseURL: NSURL
     let baseComponents: [String]
@@ -34,7 +72,7 @@ class HTMLGenerator {
     
     func generate(to outURL: NSURL) {
         let teams = enumerateTeams(picturesTeamsURL, logosURL: logosURL)
-        let programManagers = enumerateMembers(picturesProgramManagersURL)
+        let programManagers = enumerateMembers(picturesProgramManagersURL, defaultRole: "Program Manager")
         let colors = genPalette(teams.count)
         
         for (i,color) in colors.enumerate() {
@@ -68,6 +106,7 @@ class HTMLGenerator {
     }
     
     func extractName(fileName: String) -> [String] {
+        let fileName = fileName.stringByReplacingOccurrencesOfString(":", withString: "/")
         let nameParts = Array(fileName.characters.split { $0 == "_" }
             .lazy.dropFirst().map(String.init))
         return nameParts.count > 0 ? nameParts : [fileName]
@@ -124,12 +163,12 @@ class HTMLGenerator {
         }
     }
     
-    func enumerateMembers(partURL: NSURL) -> [Member] {
+    func enumerateMembers(partURL: NSURL, defaultRole: String?) -> [Member] {
         return enumerateFs(partURL) { (members: [Member], memberURL: NSURL) in
             if !memberURL.hasDirectoryPath {
                 var members = members
                 let name = self.extractName(memberURL.URLByDeletingPathExtension!.lastPathComponent!)
-                let member = Member(name: name.first!, teamname: name.count > 1 ? name[1] : nil, imagePath: memberURL.relativeString!)
+                let member = Member(name: name.first!, role: name.count > 1 ? name[1] : defaultRole, imagePath: memberURL.relativeString!)
                 members.append(member)
                 return members
             }
@@ -137,11 +176,13 @@ class HTMLGenerator {
         }
     }
     
-    func enumerateParts(teamURL: NSURL) -> [String:[Member]] {
-        return enumerateFs(teamURL) { (parts: [String:[Member]], partURL: NSURL) in
-            if partURL.hasDirectoryPath {
+    func enumerateParts(teamURL: NSURL, teamName: String) -> [Part:[Member]] {
+        return enumerateFs(teamURL) { (parts: [Part:[Member]], partURL: NSURL) in
+            if partURL.hasDirectoryPath,
+                let part = Part(directoryName: partURL.lastPathComponent!) {
                 var parts = parts
-                parts[partURL.lastPathComponent!] = self.enumerateMembers(partURL)
+                let defaultRole = part == .Customer ? teamName : part.defaultRole
+                parts[part] = self.enumerateMembers(partURL, defaultRole: defaultRole)
                 return parts
             }
             return parts
@@ -153,17 +194,17 @@ class HTMLGenerator {
         return enumerateFs(teamsURL) { (teams: [Team], teamURL: NSURL) in
             if teamURL.hasDirectoryPath {
                 var teams = teams
-                let parts = self.enumerateParts(teamURL)
                 let name = self.extractName(teamURL.lastPathComponent!).first!
+                let parts = self.enumerateParts(teamURL, teamName: name)
                 let team = Team(name: name,
                                 logoPath: logos[name],
-                                customers:       parts["1_Customer"]!,
-                                projectLeaders:  parts["2_Project Leader"]!,
-                                coaches:         parts["3_Coach"]!,
-                                modelingManager: parts["4_Modeling"]!.first!,
-                                releaseManager:  parts["5_Release Mgmt"]!.first!,
-                                mergeManager:    parts["6_Merge Mgmt"]!.first!,
-                                teamMembers:     parts["9_Team"]!)
+                                customers:        parts[.Customer] ?? [],
+                                projectLeaders:   parts[.ProjectLeader] ?? [],
+                                coaches:          parts[.Coach] ?? [],
+                                modelingManagers: parts[.Modeling] ?? [],
+                                releaseManagers:  parts[.ReleaseMgmt] ?? [],
+                                mergeManagers:    parts[.MergeMgmt] ?? [],
+                                teamMembers:      parts[.Team] ?? [])
                 teams.append(team)
                 return teams
             }

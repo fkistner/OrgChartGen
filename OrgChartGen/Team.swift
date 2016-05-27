@@ -16,20 +16,20 @@ class Team {
     let customers: [Member]
     let projectLeaders: [Member]
     let coaches: [Member]
-    let modelingManager: Member
-    let releaseManager: Member
-    let mergeManager: Member
+    let modelingManagers: [Member]
+    let releaseManagers: [Member]
+    let mergeManagers: [Member]
     let teamMembers: [Member]
     
-    init(name: String, logoPath: String?, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManager: Member, releaseManager: Member, mergeManager: Member, teamMembers: [Member]) {
+    init(name: String, logoPath: String?, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManagers: [Member], releaseManagers: [Member], mergeManagers: [Member], teamMembers: [Member]) {
         self.name = name
         self.logoPath = logoPath
         self.customers = customers
         self.projectLeaders = projectLeaders
         self.coaches = coaches
-        self.modelingManager = modelingManager
-        self.releaseManager = releaseManager
-        self.mergeManager = mergeManager
+        self.modelingManagers = modelingManagers
+        self.releaseManagers = releaseManagers
+        self.mergeManagers = mergeManagers
         self.teamMembers = teamMembers
     }
 }
@@ -41,9 +41,9 @@ func PivotBox(teams: [Team]) -> MustacheBox {
         "customers": teams.map({ $0.customers }),
         "projectLeaders": teams.map({ $0.projectLeaders }),
         "coaches": teams.map({ $0.coaches }),
-        "modelingManager": teams.map({ $0.modelingManager }),
-        "releaseManager": teams.map({ $0.releaseManager }),
-        "mergeManager": teams.map({ $0.mergeManager })
+        "modelingManagers": teams.map({ $0.modelingManagers }),
+        "releaseManagers": teams.map({ $0.releaseManagers }),
+        "mergeManagers": teams.map({ $0.mergeManagers })
     ]
     return Box(props)
 }
@@ -55,9 +55,9 @@ extension Team : MustacheBoxable {
             "customers": customers,
             "projectLeaders": projectLeaders,
             "coaches": coaches,
-            "modelingManager": modelingManager,
-            "releaseManager": releaseManager,
-            "mergeManager": mergeManager,
+            "modelingManagers": modelingManagers,
+            "releaseManagers": releaseManagers,
+            "mergeManagers": mergeManagers,
             "teamMembers": teamMembers
         ]
         if let logoPath = logoPath {
@@ -72,12 +72,12 @@ extension Team : MustacheBoxable {
 
 class Member {
     let name: String
-    let teamname: String?
+    let role: String?
     let imagePath: String
     
-    init(name: String, teamname: String?, imagePath: String) {
+    init(name: String, role: String?, imagePath: String) {
         self.name = name
-        self.teamname = teamname
+        self.role = role
         self.imagePath = imagePath
     }
 }
@@ -88,8 +88,8 @@ extension Member : MustacheBoxable {
             "name": name,
             "imagePath": imagePath
         ]
-        if let teamname = teamname {
-            props["teamname"] = teamname
+        if let role = role {
+            props["role"] = role
         }
         return Box(props)
     }
