@@ -9,12 +9,11 @@
 body {
     position: relative;
     display: inline-block;
-    padding: 20px;
 }
 
 header {
 	width: calc(100% - 40px);
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 header > div, header > h1 {
@@ -43,7 +42,7 @@ img {
 .teams {
     display: table;
     border-spacing: 20px 0;
-    margin: 0 -20px;
+    margin: 20px 0;
 }
 
 .teams > div {
