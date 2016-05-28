@@ -101,6 +101,7 @@ div > p > img {
 
 .teamrow img {
     width: 220px;
+    height: 40px;
     object-fit: contain;
     margin: 0 auto;
 }
