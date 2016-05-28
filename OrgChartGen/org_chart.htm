@@ -5,7 +5,7 @@
 <body>
 <header>
   <div class="graybox">
-      {{# programManagers }}<p><img src="{{ imagePath }}"><span class="pl">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ programManagers }}
+      {{# programManagers }}<p><img src="{{ imagePath }}"><span><span class="pl">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ programManagers }}
   </div>
   <h1>iPraktikum 2016</h1>
   <div class="graybox">Tech</div>
@@ -15,7 +15,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# customers }}<p><img src="{{ imagePath }}"><span class="pl">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ customers }}
+          {{# customers }}<p><img src="{{ imagePath }}"><span><span class="customer">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ customers }}
       </div>
       {{/ teams }}
   </div>
@@ -23,14 +23,14 @@
   <div>
       {{# teams }}
       <div>
-          {{# projectLeaders }}<p><img src="{{ imagePath }}"><span class="pl">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ projectLeaders }}
+          {{# projectLeaders }}<p><img src="{{ imagePath }}"><span><span class="pl">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ projectLeaders }}
       </div>
       {{/ teams }}
   </div>
   <div>
       {{# teams }}
       <div>
-          {{# coaches }}<p><img src="{{ imagePath }}"><span class="coach">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ coaches }}
+          {{# coaches }}<p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ coaches }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
@@ -39,7 +39,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# modelingManagers }}<p><img src="{{ imagePath }}"><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ modelingManagers }}
+          {{# modelingManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ modelingManagers }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
@@ -47,7 +47,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# releaseManagers }}<p><img src="{{ imagePath }}"><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ releaseManagers }}
+          {{# releaseManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ releaseManagers }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
@@ -55,7 +55,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# mergeManagers }}<p><img src="{{ imagePath }}"><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</p>{{/ mergeManagers }}
+          {{# mergeManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# role }}<br>{{.}}{{/ role }}</span></p>{{/ mergeManagers }}
       </div>
       {{/ teams }}
       <div>CROSS</div><span class="overlay graybox"></span>
@@ -63,7 +63,7 @@
   <div>
       {{# teams }}
       <div>
-          {{# teamMembers }}<p><img src="{{ imagePath }}">{{ name }}</p>{{/ teamMembers }}
+          {{# teamMembers }}<p><img src="{{ imagePath }}"><span>{{ name }}</span></p>{{/ teamMembers }}
       </div>
       {{/ teams }}
   </div>

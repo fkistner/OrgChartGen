@@ -14,16 +14,15 @@ body {
 
 header {
 	width: calc(100% - 40px);
-	display: table;
     margin-bottom: 20px;
 }
 
 header > div, header > h1 {
-	display: table-cell;
+    display: inline-block;
 }
 
-header > * > * {
-    display: inline-block;
+header > div > div {
+    padding: 10px 30px !important;
 }
 
 h1 {
@@ -80,16 +79,31 @@ div > p {
     padding: 10px;
 }
 
+div > p::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+div > p > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 70px;
+}
+
+div > p > img {
+    position: absolute;
+}
+
 .teamrow > div {
     padding: 10px !important;
 }
 
 .teamrow img {
-    float: none !important;
     width: 220px;
     object-fit: contain;
-    border: none !important;
-    margin: 0 auto !important;
+    margin: 0 auto;
 }
 
 .teamrow > div::before {
@@ -104,11 +118,22 @@ div > p {
 }
 
 .graybox {
-	background: rgba(0, 0, 0, .1);
-	border: rgba(0, 0, 0, .5) solid 3px;
+    position: relative;
+	padding: 10px;
+}
+
+.graybox::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, .1);
+    border: rgba(0, 0, 0, .5) solid 3px;
     border-top: none;
     border-bottom: none;
-	padding: 20px;
 }
 
 .graybox p {
@@ -122,13 +147,6 @@ div > p {
     height: 60px;
 	margin: 8px 20px;
     padding: 12px;
-    z-index: -1;
-}
-
-div img {
-    float: left;
-    border: rgba(0, 0, 0, .25) solid 1px;
-    margin-right: 10px;
 }
 
 .teams > div > div:nth-child(11) {
@@ -138,8 +156,8 @@ div img {
 
 {{# each(teams) }}
 
-.teams > div > div:nth-child({{ @indexPlusOne }}) {
-    
+.teams > div > div:nth-child({{ @indexPlusOne }}) > p > img {
+    border: rgba({{ color }}, 0.5) solid 2px;
 }
 .teams > div > div:nth-child({{ @indexPlusOne }})::before {
     background: rgba({{ color }}, .30);
