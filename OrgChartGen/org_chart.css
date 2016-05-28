@@ -109,7 +109,7 @@ div > p > img {
     background: none !important;
 }
 
-.customer, .coach, .pl {
+.pm, .customer, .pl, .coach {
     font-weight: 500;
 }
 
