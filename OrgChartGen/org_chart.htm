@@ -8,7 +8,9 @@
       {{# programManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
   </div>
   <h1>iPraktikum 2016</h1>
-  <div class="graybox">Tech</div>
+  <div class="graybox">
+      {{# infraManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
+  </div>
 </header>
 <div class="teams">
   <div class="teamrow">{{# teams }}<div><img src="{{ logoPath }}"></div>{{/ teams }}</div>

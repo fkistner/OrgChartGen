@@ -60,6 +60,7 @@ class HTMLGenerator {
     
     let picturesTeamsURL: NSURL
     let picturesProgramManagersURL: NSURL
+    let picturesInfraManagersURL: NSURL
     let logosURL: NSURL
     
     init(_ inURL: NSURL) {
@@ -67,19 +68,21 @@ class HTMLGenerator {
         baseComponents = baseURL.pathComponents ?? []
         picturesTeamsURL = inURL.URLByAppendingPathComponent("pictures/Teams")
         picturesProgramManagersURL = inURL.URLByAppendingPathComponent("pictures/Program Management")
+        picturesInfraManagersURL = inURL.URLByAppendingPathComponent("pictures/Infrastructure")
         logosURL = inURL.URLByAppendingPathComponent("logos")
     }
     
     func generate(to outURL: NSURL) {
         let teams = enumerateTeams(picturesTeamsURL, logosURL: logosURL)
         let programManagers = enumerateMembers(picturesProgramManagersURL, defaultRole: "Program Manager")
+        let infraManagers = enumerateMembers(picturesInfraManagersURL, defaultRole: nil)
         let colors = genPalette(teams.count)
         
         for (i,color) in colors.enumerate() {
             teams[i].color = color
         }
         
-        let box = Box(["teams": teams, "programManagers": programManagers])
+        let box = Box(["teams": teams, "programManagers": programManagers, "infraManagers": infraManagers])
         
         let htmlRepo = TemplateRepository(bundle: NSBundle.mainBundle(), templateExtension: "htm")
         let cssRepo = TemplateRepository(bundle: NSBundle.mainBundle(), templateExtension: "css")
