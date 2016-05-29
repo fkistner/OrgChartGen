@@ -72,12 +72,12 @@ extension Team : MustacheBoxable {
 
 class Member {
     let name: String
-    let role: String?
+    let roles: [String]
     let imagePath: String
     
-    init(name: String, role: String?, imagePath: String) {
+    init(name: String, roles: [String], imagePath: String) {
         self.name = name
-        self.role = role
+        self.roles = roles
         self.imagePath = imagePath
     }
 }
@@ -86,11 +86,9 @@ extension Member : MustacheBoxable {
     var mustacheBox: MustacheBox {
         var props: [String: AnyObject] = [
             "name": name,
+            "roles": roles,
             "imagePath": imagePath
         ]
-        if let role = role {
-            props["role"] = role
-        }
         return Box(props)
     }
 }

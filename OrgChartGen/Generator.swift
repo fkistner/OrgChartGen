@@ -105,37 +105,26 @@ class HTMLGenerator {
         }
     }
     
-    func extractName(fileName: String) -> [String] {
+    func extractName(fileName: String) -> (name: String, roles: [String]?) {
         let fileName = fileName.stringByReplacingOccurrencesOfString(":", withString: "/")
-        let nameParts = Array(fileName.characters.split { $0 == "_" }
-            .lazy.dropFirst().map(String.init))
-        return nameParts.count > 0 ? nameParts : [fileName]
+        let nameParts = fileName.characters.split { $0 == "_" }.dropFirst()
+        let name = nameParts.first.flatMap(String.init) ?? fileName
+        let roles = nameParts.count > 1 ? nameParts.dropFirst().map(String.init) : nil as [String]?
+        return (name: name, roles: roles)
     }
     
     func resolveRelativeComponents(components: [String]) -> [String] {
-        let totalLength  = max(self.baseComponents.count, components.count)
-        
-        var baseComponents: [String?] = self.baseComponents.map { $0 }
-        baseComponents.appendContentsOf(Repeat(count: totalLength - self.baseComponents.count, repeatedValue: nil))
-        var components: [String?] = components.map { $0 }
-        components.appendContentsOf(Repeat(count: totalLength - components.count, repeatedValue: nil))
-        
-        var common = true
-        var up = [String]()
-        var down = [String]()
-        
-        for (b,c) in zip(baseComponents, components) {
-            if b != c {
-                common = false
-            }
-            if !common, let _ = b {
-                up.append("..")
-            }
-            if !common, let c = c {
-                down.append(c)
+        var common = min(baseComponents.count, components.count)
+        for i in 0..<common {
+            if baseComponents[i] != components[i] {
+                common = i
+                break
             }
         }
-        return up + down
+        
+        let up = Repeat<String>(count: baseComponents.count - common, repeatedValue: "..")
+        let down = components.dropFirst(common)
+        return Array(up) + down
     }
     
     private func enumerateFs<T where T: Initializable>(url: NSURL, descend: Bool = false, action: (T,NSURL) -> T) -> T {
@@ -156,7 +145,7 @@ class HTMLGenerator {
             if !logoURL.hasDirectoryPath {
                 var logos = logos
                 let name = self.extractName(logoURL.URLByDeletingPathExtension!.lastPathComponent!)
-                logos[name.first!] = logoURL.relativeString!
+                logos[name.name] = logoURL.relativeString!
                 return logos
             }
             return logos
@@ -168,7 +157,8 @@ class HTMLGenerator {
             if !memberURL.hasDirectoryPath {
                 var members = members
                 let name = self.extractName(memberURL.URLByDeletingPathExtension!.lastPathComponent!)
-                let member = Member(name: name.first!, role: name.count > 1 ? name[1] : defaultRole, imagePath: memberURL.relativeString!)
+                let roles = name.roles ?? defaultRole.flatMap{ [$0] } ?? []
+                let member = Member(name: name.name, roles: roles, imagePath: memberURL.relativeString!)
                 members.append(member)
                 return members
             }
@@ -194,7 +184,7 @@ class HTMLGenerator {
         return enumerateFs(teamsURL) { (teams: [Team], teamURL: NSURL) in
             if teamURL.hasDirectoryPath {
                 var teams = teams
-                let name = self.extractName(teamURL.lastPathComponent!).first!
+                let name = self.extractName(teamURL.lastPathComponent!).name
                 let parts = self.enumerateParts(teamURL, teamName: name)
                 let team = Team(name: name,
                                 logoPath: logos[name],
