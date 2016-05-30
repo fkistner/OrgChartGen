@@ -14,10 +14,12 @@ body {
 header {
 	width: calc(100% - 40px);
     margin: 20px;
+    margin-bottom: 40px;
 }
 
 header > div, header > h1 {
     display: inline-block;
+    vertical-align: middle;
 }
 
 header > div > div {
@@ -59,7 +61,7 @@ img {
 .teams > div > div {
 	display: table-cell;
 	position: relative;
-	padding: 10px;
+	padding: 10px 5px;
 	width: 220px;
     min-width: 220px;
     vertical-align: top;
@@ -80,9 +82,9 @@ div > p {
     display: inline-block;
     vertical-align: middle;
     text-align: left;
-    width: 220px;
+    width: calc(100% - 10px);
     height: 60px;
-    padding: 10px;
+    padding: 10px 5px;
 }
 
 div > p::before {
@@ -108,7 +110,7 @@ div > p > img {
 }
 
 .teamrow img {
-    width: 220px;
+    width: calc(100% - 10px);
     height: 40px;
     object-fit: contain;
     margin: 0 auto;
@@ -127,7 +129,7 @@ div > p > img {
 
 .graybox {
     position: relative;
-	padding: 10px;
+	padding: 5px 12px;
     background: rgba(0, 0, 0, .1);
     border: rgba(0, 0, 0, .5) solid 3px;
     border-top: none;
@@ -155,24 +157,36 @@ div > p > img {
 	left: 0;
     right: 0;
     height: 60px;
-	margin: 8px 20px;
+	margin: 10px 20px;
     padding: 12px;
     z-index: -1;
     text-align: right;
 }
 
 .teams > div > div:last-of-type {
-    width: 40px;
-    min-width: 40px;
+    width: 60px;
+    min-width: 60px;
 }
 
 .teams > div > div:nth-child(11) {
-    width: 480px;
-    min-width: 480px;
+    width: 420px !important;
+    min-width: 420px !important;
+}
+.teams > div > div:nth-child(11) p {
+    width: calc(100%/2 - 20px) !important;
 }
 
 {{# each(teams) }}
 
+.teams > div > div:nth-child({{ @indexPlusOne }}) {
+    padding: 10px;
+    width: 240px;
+    min-width: 240px;
+}
+.teams > div > div:nth-child({{ @indexPlusOne }}) > p {
+    width: calc(100% - 20px);
+    padding: 10px;
+}
 .teams > div > div:nth-child({{ @indexPlusOne }}) > p > img {
     border: rgba({{ color }}, .5) solid 2px;
 }
