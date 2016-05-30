@@ -11,6 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var renderer: PDFRenderer!
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         
@@ -26,8 +28,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }*/
         
         let inURL = NSURL(fileURLWithPath: inPath, isDirectory: true)
-        HTMLGenerator(inURL).generate(to: inURL)
-        exit(0)
+        let htmlURL = inURL.URLByAppendingPathComponent("org_chart.htm")
+        HTMLGenerator(inURL).generate(to: htmlURL)
+        
+        renderer = PDFRenderer()
+        renderer.render(htmlURL, to: inURL.URLByAppendingPathComponent("org_chart.pdf")) {
+            exit(0)
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

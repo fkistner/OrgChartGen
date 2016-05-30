@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		172CBEF31CF742CC00EEE433 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CBEF21CF742CB00EEE433 /* Generator.swift */; };
+		17CD7E081CFC540A005FC08B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD7E071CFC540A005FC08B /* Renderer.swift */; };
 		17CF8AF51CF52B9E0057312D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8AF41CF52B9E0057312D /* AppDelegate.swift */; };
 		17CF8AF71CF52B9E0057312D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8AF61CF52B9E0057312D /* ViewController.swift */; };
 		17CF8AF91CF52B9F0057312D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17CF8AF81CF52B9F0057312D /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		172CBEF21CF742CB00EEE433 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		17CD7E071CFC540A005FC08B /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		17CF8AF11CF52B9E0057312D /* OrgChartGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrgChartGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17CF8AF41CF52B9E0057312D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17CF8AF61CF52B9E0057312D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				17CF8AF41CF52B9E0057312D /* AppDelegate.swift */,
 				17CF8AF61CF52B9E0057312D /* ViewController.swift */,
 				172CBEF21CF742CB00EEE433 /* Generator.swift */,
+				17CD7E071CFC540A005FC08B /* Renderer.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				17CF8B061CF52CD20057312D /* Team.swift in Sources */,
 				172CBEF31CF742CC00EEE433 /* Generator.swift in Sources */,
 				17CF8AF71CF52B9E0057312D /* ViewController.swift in Sources */,
+				17CD7E081CFC540A005FC08B /* Renderer.swift in Sources */,
 				17CF8AF51CF52B9E0057312D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

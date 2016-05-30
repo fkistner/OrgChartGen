@@ -74,7 +74,7 @@ class HTMLGenerator {
         logosURL = inURL.URLByAppendingPathComponent("logos")
     }
     
-    func generate(to outURL: NSURL) {
+    func generate(to htmlURL: NSURL) {
         let teams = enumerateTeams(picturesTeamsURL, logosURL: logosURL)
         let programManagers = enumerateMembers(picturesProgramManagersURL, defaultRole: "Program Manager")
         let infraManagers = enumerateMembers(picturesInfraManagersURL, defaultRole: nil)
@@ -103,10 +103,11 @@ class HTMLGenerator {
         
         htmlRendered
             .dataUsingEncoding(NSUTF8StringEncoding)?
-            .writeToURL(outURL.URLByAppendingPathComponent("org_chart.htm"), atomically: false)
+            .writeToURL(htmlURL, atomically: false)
+        let cssURL = htmlURL.URLByDeletingPathExtension!.URLByAppendingPathExtension("css")
         cssRendered
             .dataUsingEncoding(NSUTF8StringEncoding)?
-            .writeToURL(outURL.URLByAppendingPathComponent("org_chart.css"), atomically: false)
+            .writeToURL(cssURL, atomically: false)
     }
     
     func genPalette(noColors: Int) -> [String] {
