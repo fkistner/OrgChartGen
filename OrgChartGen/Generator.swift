@@ -61,6 +61,7 @@ class HTMLGenerator {
     let picturesTeamsURL: NSURL
     let picturesProgramManagersURL: NSURL
     let picturesInfraManagersURL: NSURL
+    let picturesCrossProjectURL: NSURL
     let logosURL: NSURL
     
     init(_ inURL: NSURL) {
@@ -69,6 +70,7 @@ class HTMLGenerator {
         picturesTeamsURL = inURL.URLByAppendingPathComponent("pictures/Teams")
         picturesProgramManagersURL = inURL.URLByAppendingPathComponent("pictures/Program Management")
         picturesInfraManagersURL = inURL.URLByAppendingPathComponent("pictures/Infrastructure")
+        picturesCrossProjectURL = inURL.URLByAppendingPathComponent("pictures/Cross Project")
         logosURL = inURL.URLByAppendingPathComponent("logos")
     }
     
@@ -76,13 +78,19 @@ class HTMLGenerator {
         let teams = enumerateTeams(picturesTeamsURL, logosURL: logosURL)
         let programManagers = enumerateMembers(picturesProgramManagersURL, defaultRole: "Program Manager")
         let infraManagers = enumerateMembers(picturesInfraManagersURL, defaultRole: nil)
-        let colors = genPalette(teams.count)
+        let crossProject = teamFromURL(picturesCrossProjectURL, logos: [:])
         
+        let colors = genPalette(teams.count)
         for (i,color) in colors.enumerate() {
             teams[i].color = color
         }
         
-        let box = Box(["teams": teams, "programManagers": programManagers, "infraManagers": infraManagers])
+        let box = Box([
+            "teams": teams,
+            "programManagers": programManagers,
+            "infraManagers": infraManagers,
+            "crossProject": crossProject
+        ])
         
         let htmlRepo = TemplateRepository(bundle: NSBundle.mainBundle(), templateExtension: "htm")
         let cssRepo = TemplateRepository(bundle: NSBundle.mainBundle(), templateExtension: "css")
@@ -182,22 +190,26 @@ class HTMLGenerator {
         }
     }
     
+    func teamFromURL(teamURL: NSURL, logos: [String: String]) -> Team {
+        let name = self.extractName(teamURL.lastPathComponent!).name
+        let parts = self.enumerateParts(teamURL, teamName: name)
+        return Team(name: name,
+                    logoPath: logos[name],
+                    customers:        parts[.Customer] ?? [],
+                    projectLeaders:   parts[.ProjectLeader] ?? [],
+                    coaches:          parts[.Coach] ?? [],
+                    modelingManagers: parts[.Modeling] ?? [],
+                    releaseManagers:  parts[.ReleaseMgmt] ?? [],
+                    mergeManagers:    parts[.MergeMgmt] ?? [],
+                    teamMembers:      parts[.Team] ?? [])
+    }
+    
     func enumerateTeams(teamsURL: NSURL, logosURL: NSURL) -> [Team] {
         let logos = enumerateLogos(logosURL)
         return enumerateFs(teamsURL) { (teams: [Team], teamURL: NSURL) in
             if teamURL.hasDirectoryPath {
                 var teams = teams
-                let name = self.extractName(teamURL.lastPathComponent!).name
-                let parts = self.enumerateParts(teamURL, teamName: name)
-                let team = Team(name: name,
-                                logoPath: logos[name],
-                                customers:        parts[.Customer] ?? [],
-                                projectLeaders:   parts[.ProjectLeader] ?? [],
-                                coaches:          parts[.Coach] ?? [],
-                                modelingManagers: parts[.Modeling] ?? [],
-                                releaseManagers:  parts[.ReleaseMgmt] ?? [],
-                                mergeManagers:    parts[.MergeMgmt] ?? [],
-                                teamMembers:      parts[.Team] ?? [])
+                let team = self.teamFromURL(teamURL, logos: logos)
                 teams.append(team)
                 return teams
             }

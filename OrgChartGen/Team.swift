@@ -84,7 +84,7 @@ class Member {
 
 extension Member : MustacheBoxable {
     var mustacheBox: MustacheBox {
-        var props: [String: AnyObject] = [
+        let props: [String: AnyObject] = [
             "name": name,
             "roles": roles,
             "imagePath": imagePath

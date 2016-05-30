@@ -35,7 +35,7 @@
           {{# coaches }}<p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ coaches }}
       </div>
       {{/ teams }}
-      <div>CROSS</div><span class="overlay graybox"></span>
+      {{# crossProject.coaches }}<div><p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.coaches }}<div></div><span class="overlay graybox"><h3>Coach<br>Instructors</h3></span>
   </div>
   <div>{{# teams }}<div><h2>Development Team</h2></div>{{/ teams }}</div>
   <div>
@@ -44,7 +44,7 @@
           {{# modelingManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ modelingManagers }}
       </div>
       {{/ teams }}
-      <div>CROSS</div><span class="overlay graybox"></span>
+      {{# crossProject.modelingManagers }}<div><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.modelingManagers }}<div></div><span class="overlay graybox"><h3>Modeling</h3></span>
   </div>
   <div>
       {{# teams }}
@@ -52,7 +52,7 @@
           {{# releaseManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ releaseManagers }}
       </div>
       {{/ teams }}
-      <div>CROSS</div><span class="overlay graybox"></span>
+      {{# crossProject.releaseManagers }}<div><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.releaseManagers }}<div></div><span class="overlay graybox"><h3>Release<br>Management</h3></span>
   </div>
   <div>
       {{# teams }}
@@ -60,7 +60,7 @@
           {{# mergeManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ mergeManagers }}
       </div>
       {{/ teams }}
-      <div>CROSS</div><span class="overlay graybox"></span>
+      {{# crossProject.mergeManagers }}<div><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.mergeManagers }}<div></div><span class="overlay graybox"><h3>Merge<br>Management</h3></span>
   </div>
   <div>
       {{# teams }}
