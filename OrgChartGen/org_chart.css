@@ -102,7 +102,7 @@ div > p > span {
 
 div > p > img {
     position: absolute;
-    border: rgba(0, 0, 0, .25) solid 2px;
+    border: rgba(0, 0, 0, .2) solid 2px;
 }
 
 .teamrow > div {
@@ -188,7 +188,7 @@ div > p > img {
     padding: 10px;
 }
 .teams > div > div:nth-child({{ @indexPlusOne }}) > p > img {
-    border: rgba({{ color }}, .5) solid 2px;
+    border: rgba({{ color }}, .6) solid 2px;
 }
 .teams > div > div:nth-child({{ @indexPlusOne }})::before {
     background: rgba({{ color }}, .30);
