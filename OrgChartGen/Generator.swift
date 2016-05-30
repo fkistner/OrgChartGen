@@ -196,6 +196,7 @@ class HTMLGenerator {
         let parts = self.enumerateParts(teamURL, teamName: name)
         return Team(name: name,
                     logoPath: logos[name],
+                    twoColumns: parts[.Team]?.count > 4,
                     customers:        parts[.Customer] ?? [],
                     projectLeaders:   parts[.ProjectLeader] ?? [],
                     coaches:          parts[.Coach] ?? [],

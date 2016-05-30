@@ -13,6 +13,7 @@ class Team {
     let name: String
     let logoPath: String?
     var color: String?
+    let twoColumns: Bool
     let customers: [Member]
     let projectLeaders: [Member]
     let coaches: [Member]
@@ -21,9 +22,10 @@ class Team {
     let mergeManagers: [Member]
     let teamMembers: [Member]
     
-    init(name: String, logoPath: String?, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManagers: [Member], releaseManagers: [Member], mergeManagers: [Member], teamMembers: [Member]) {
+    init(name: String, logoPath: String?, twoColumns: Bool, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManagers: [Member], releaseManagers: [Member], mergeManagers: [Member], teamMembers: [Member]) {
         self.name = name
         self.logoPath = logoPath
+        self.twoColumns = twoColumns
         self.customers = customers
         self.projectLeaders = projectLeaders
         self.coaches = coaches
@@ -34,24 +36,11 @@ class Team {
     }
 }
 
-func PivotBox(teams: [Team]) -> MustacheBox {
-    let props = [
-        "name": teams.map({ $0.name }),
-        "logoPath": teams.map({ $0.logoPath ?? NSNull() }),
-        "customers": teams.map({ $0.customers }),
-        "projectLeaders": teams.map({ $0.projectLeaders }),
-        "coaches": teams.map({ $0.coaches }),
-        "modelingManagers": teams.map({ $0.modelingManagers }),
-        "releaseManagers": teams.map({ $0.releaseManagers }),
-        "mergeManagers": teams.map({ $0.mergeManagers })
-    ]
-    return Box(props)
-}
-
 extension Team : MustacheBoxable {
     var mustacheBox: MustacheBox {
         var props: [String: AnyObject] = [
             "teamname": name,
+            "twoColumns": twoColumns,
             "customers": customers,
             "projectLeaders": projectLeaders,
             "coaches": coaches,

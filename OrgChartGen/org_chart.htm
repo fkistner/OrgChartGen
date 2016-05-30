@@ -3,71 +3,79 @@
 <link rel="stylesheet" href="org_chart.css">
 <title>OrgChart iPraktikum 2016</title>
 <body>
-<header>
-  <div class="graybox">
-      {{# programManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
-  </div>
-  <h1>iPraktikum 2016</h1>
-  <div class="graybox">
-      {{# infraManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
-  </div>
-</header>
-<div class="teams">
-  <div class="teamrow">{{# teams }}<div><img src="{{ logoPath }}"></div>{{/ teams }}</div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# customers }}<p><img src="{{ imagePath }}"><span><span class="customer">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ customers }}
-      </div>
-      {{/ teams }}
-  </div>
-  <div>{{# teams }}<div><h2>Project Management</h2></div>{{/ teams }}</div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# projectLeaders }}<p><img src="{{ imagePath }}"><span><span class="pl">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ projectLeaders }}
-      </div>
-      {{/ teams }}
-  </div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# coaches }}<p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ coaches }}
-      </div>
-      {{/ teams }}
-      {{# crossProject.coaches }}<div><p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.coaches }}<div></div><span class="overlay graybox"><h3>Coach<br>Instructors</h3></span>
-  </div>
-  <div>{{# teams }}<div><h2>Development Team</h2></div>{{/ teams }}</div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# modelingManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ modelingManagers }}
-      </div>
-      {{/ teams }}
-      {{# crossProject.modelingManagers }}<div><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.modelingManagers }}<div></div><span class="overlay graybox"><h3>Modeling</h3></span>
-  </div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# releaseManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ releaseManagers }}
-      </div>
-      {{/ teams }}
-      {{# crossProject.releaseManagers }}<div><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.releaseManagers }}<div></div><span class="overlay graybox"><h3>Release<br>Management</h3></span>
-  </div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# mergeManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ mergeManagers }}
-      </div>
-      {{/ teams }}
-      {{# crossProject.mergeManagers }}<div><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></div>{{/ crossProject.mergeManagers }}<div></div><span class="overlay graybox"><h3>Merge<br>Management</h3></span>
-  </div>
-  <div>
-      {{# teams }}
-      <div>
-          {{# teamMembers }}<p><img src="{{ imagePath }}"><span>{{ name }}</span></p>{{/ teamMembers }}
-      </div>
-      {{/ teams }}
-  </div>
-</div>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="{{ teams.count }}">
+                    <header>
+                        <div class="graybox">
+                            {{# programManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
+                        </div>
+                        <h1>iPraktikum 2016</h1>
+                        <div class="graybox">
+                            {{# infraManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
+                        </div>
+                    </header>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="teamrow">{{# teams }}<td><img src="{{ logoPath }}"></td>{{/ teams }}</tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# customers }}<p><img src="{{ imagePath }}"><span><span class="customer">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ customers }}
+                </td>
+                {{/ teams }}
+            </tr>
+            <tr>{{# teams }}<td><h2>Project Management</h2></td>{{/ teams }}</tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# projectLeaders }}<p><img src="{{ imagePath }}"><span><span class="pl">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ projectLeaders }}
+                </td>
+                {{/ teams }}
+            </tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# coaches }}<p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ coaches }}
+                </td>
+                {{/ teams }}
+                {{# crossProject.coaches }}<td><p><img src="{{ imagePath }}"><span><span class="coach">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></td>{{/ crossProject.coaches }}<td class="overlay"><span class="graybox"><h3>Coach<br>Instructors</h3></span></td>
+            </tr>
+            <tr>{{# teams }}<td><h2>Development Team</h2></td>{{/ teams }}</tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# modelingManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ modelingManagers }}
+                </td>
+                {{/ teams }}
+                {{# crossProject.modelingManagers }}<td><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></td>{{/ crossProject.modelingManagers }}<td class="overlay"><span class="graybox"><h3>Modeling</h3></span></td>
+            </tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# releaseManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ releaseManagers }}
+                </td>
+                {{/ teams }}
+                {{# crossProject.releaseManagers }}<td><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></td>{{/ crossProject.releaseManagers }}<td class="overlay"><span class="graybox"><h3>Release<br>Management</h3></span></td>
+            </tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# mergeManagers }}<p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ mergeManagers }}
+                </td>
+                {{/ teams }}
+                {{# crossProject.mergeManagers }}<td><p><img src="{{ imagePath }}"><span><span class="crossproject">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p></td>{{/ crossProject.mergeManagers }}<td class="overlay"><span class="graybox"><h3>Merge<br>Management</h3></span></td>
+            </tr>
+            <tr>
+                {{# teams }}
+                <td>
+                    {{# teamMembers }}<p><img src="{{ imagePath }}"><span>{{ name }}</span></p>{{/ teamMembers }}
+                </td>
+                {{/ teams }}
+            </tr>
+        </tbody>
+    </table>
 </body>
