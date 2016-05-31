@@ -39,7 +39,7 @@ h3 {
     font-weight: 500;
 }
 
-img {
+img, span.img {
     height: 60px;
 }
 
@@ -84,15 +84,26 @@ p::before {
     vertical-align: middle;
 }
 
-p > span {
+p > span.caption {
     display: inline-block;
     vertical-align: middle;
     margin-left: 70px;
 }
 
-p > img {
+p > span.img {
     position: absolute;
-    border: rgba(0, 0, 0, .2) solid 2px;
+    padding: 2px;
+}
+
+p > span.img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    z-index: -2;
+    border: rgba(0, 0, 0, .3) solid 2px;
 }
 
 tr.teamrow img {
@@ -183,8 +194,8 @@ tbody td:nth-child({{ @indexPlusOne }}) p {
     padding: 10px;
     width: calc(100%{{# twoColumns }}/2{{/ twoColumns }} - 20px);
 }
-tbody td:nth-child({{ @indexPlusOne }}) p > img {
-    border: 2px solid rgba({{ color }}, .5);
+tbody td:nth-child({{ @indexPlusOne }}) p > span.img::before {
+    border: 2px solid rgba({{ color }}, .75);
 }
 tbody td:nth-child({{ @indexPlusOne }})::before {
     background: rgba({{ color }}, .30);
