@@ -106,13 +106,14 @@ tr.teamrow img {
 tr.teamrow td {
     padding: 0 !important;
     padding-top: 20px !important;
+    padding-bottom: 10px !important;
     padding-left: 3px !important;
     vertical-align: middle;
 }
 
 tr.teamrow td::before {
     background: none !important;
-    border-top-width: 1px !important;
+    border-top-width: 2px !important;
 }
 
 .pm, .customer, .pl, .coach {
