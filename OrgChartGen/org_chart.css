@@ -190,6 +190,7 @@ tbody td:nth-child({{ @indexPlusOne }})::before {
     background: rgba({{ color }}, .30);
     border: 0 solid rgba({{ color }}, 1);
     border-left-width: 3px;
+    width: calc(100% - 3px);
 }
 
 {{/ each(teams) }}
