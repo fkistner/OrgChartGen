@@ -11,7 +11,7 @@ import Mustache
 
 class Team {
     let name: String
-    let logoPath: String?
+    let logo: Logo?
     var color: String?
     let twoColumns: Bool
     let customers: [Member]
@@ -22,9 +22,9 @@ class Team {
     let mergeManagers: [Member]
     let teamMembers: [Member]
     
-    init(name: String, logoPath: String?, twoColumns: Bool, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManagers: [Member], releaseManagers: [Member], mergeManagers: [Member], teamMembers: [Member]) {
+    init(name: String, logo: Logo?, twoColumns: Bool, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManagers: [Member], releaseManagers: [Member], mergeManagers: [Member], teamMembers: [Member]) {
         self.name = name
-        self.logoPath = logoPath
+        self.logo = logo
         self.twoColumns = twoColumns
         self.customers = customers
         self.projectLeaders = projectLeaders
@@ -49,12 +49,42 @@ extension Team : MustacheBoxable {
             "mergeManagers": mergeManagers,
             "teamMembers": teamMembers
         ]
-        if let logoPath = logoPath {
-            props["logoPath"] = logoPath
+        if let logo = logo {
+            props["logo"] = logo
         }
         if let color = color {
             props["color"] = color
         }
+        return Box(props)
+    }
+}
+
+class Logo {
+    let path: String
+    let width: Int
+    let height: Int
+    let diagonal: Float
+    let ratio: Float
+    
+    init(url: NSURL) {
+        let image = NSImage(byReferencingURL: url)
+        self.path = url.relativeString!
+        width = Int(round(image.size.width))
+        height = Int(round(image.size.height))
+        diagonal = sqrt(Float(width) * Float(width) + Float(height) * Float(height))
+        ratio = Float(max(width, height)) / Float(min(width,height))
+    }
+}
+
+extension Logo : MustacheBoxable {
+    var mustacheBox: MustacheBox {
+        let props: [String: AnyObject] = [
+            "path": path,
+            "width": width,
+            "height": height,
+            "diagonal": diagonal,
+            "ratio": ratio
+        ]
         return Box(props)
     }
 }

@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="teamrow">{{# teams }}<td><img src="{{ logoPath }}"></td>{{/ teams }}</tr>
+            <tr class="teamrow">{{# teams }}<td><img src="{{ logo.path }}" style="{{# logoScale(logo, 200, 40) }}height: calc(40px * {{ heightScale }}); width: calc(100% * {{ widthScale }} - 60px * {{ widthScale }});{{/ logoScale(logo, 200, 40) }}"></td>{{/ teams }}</tr>
             <tr>
                 {{# teams }}
                 <td>

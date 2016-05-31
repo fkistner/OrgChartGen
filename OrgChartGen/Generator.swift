@@ -96,7 +96,12 @@ class HTMLGenerator {
         let cssRepo = TemplateRepository(bundle: NSBundle.mainBundle(), templateExtension: "css")
         let htmlTemplate = try! htmlRepo.template(named: "org_chart")
         let cssTemplate = try! cssRepo.template(named: "org_chart")
-        cssTemplate.registerInBaseContext("each", Box(StandardLibrary.each))
+        
+        for template in [htmlTemplate, cssTemplate] {
+            template.extendBaseContext(MustacheBox(keyedSubscript: literalSubscript))
+            template.registerInBaseContext("logoScale", Box(determineLogoScaleByArea))
+            template.registerInBaseContext("each", Box(StandardLibrary.each))
+        }
         
         let htmlRendered = try! htmlTemplate.render(box)
         let cssRendered = try! cssTemplate.render(box)
@@ -108,6 +113,29 @@ class HTMLGenerator {
         cssRendered
             .dataUsingEncoding(NSUTF8StringEncoding)?
             .writeToURL(cssURL, atomically: false)
+    }
+    
+    let literalSubscript: KeyedSubscriptFunction = { key in
+        if let intValue = Int(key) {
+            return Box(NSNumber(integer: intValue))
+        } else if let floatValue = Float(key) {
+            return Box(NSNumber(float: floatValue))
+        }
+        return Box()
+    }
+    
+    let determineLogoScaleByArea = VariadicFilter { boxes in
+        guard boxes.count == 3,
+            let logo = boxes[0].value as? [String: AnyObject],
+            let logoWidth = logo["width"] as? Float,
+            let logoHeight = logo["height"] as? Float,
+            let width = (boxes[1].value as? NSNumber)?.floatValue,
+            let height = (boxes[2].value as? NSNumber)?.floatValue
+            else { throw MustacheError(kind: .RenderError) }
+        let magnification = max(logoWidth / width, logoHeight / height)
+        let scale = sqrt(width * height / logoWidth / logoHeight) * magnification
+        let (widthScale, heightScale) = width/height > logoWidth/logoHeight ? (1, scale) : (scale, 1)
+        return Box([ "widthScale": widthScale, "heightScale": heightScale])
     }
     
     func genPalette(noColors: Int) -> [String] {
@@ -152,12 +180,12 @@ class HTMLGenerator {
         } ?? T()
     }
     
-    func enumerateLogos(logosURL: NSURL) -> [String: String] {
-        return enumerateFs(logosURL) { (logos: [String: String], logoURL: NSURL) in
+    func enumerateLogos(logosURL: NSURL) -> [String: Logo] {
+        return enumerateFs(logosURL) { (logos: [String: Logo], logoURL: NSURL) in
             if !logoURL.hasDirectoryPath {
                 var logos = logos
                 let name = self.extractName(logoURL.URLByDeletingPathExtension!.lastPathComponent!)
-                logos[name.name] = logoURL.relativeString!
+                logos[name.name] = Logo(url: logoURL)
                 return logos
             }
             return logos
@@ -191,11 +219,11 @@ class HTMLGenerator {
         }
     }
     
-    func teamFromURL(teamURL: NSURL, logos: [String: String]) -> Team {
+    func teamFromURL(teamURL: NSURL, logos: [String: Logo]) -> Team {
         let name = self.extractName(teamURL.lastPathComponent!).name
         let parts = self.enumerateParts(teamURL, teamName: name)
         return Team(name: name,
-                    logoPath: logos[name],
+                    logo: logos[name],
                     twoColumns: parts[.Team]?.count > 4,
                     customers:        parts[.Customer] ?? [],
                     projectLeaders:   parts[.ProjectLeader] ?? [],
