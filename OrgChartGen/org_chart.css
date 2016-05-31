@@ -153,13 +153,17 @@ td.overlay {
     vertical-align: top;
 }
 
+td.overlay::before {
+    content: none;
+}
+
 td.overlay > * {
     position: absolute !important;
     left: 0;
     right: 0;
     height: 60px;
     margin: 0 20px;
-    padding: 10px;
+    padding: 11px;
     z-index: -1;
     text-align: right;
 }
