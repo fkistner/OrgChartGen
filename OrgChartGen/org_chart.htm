@@ -9,10 +9,12 @@
                 <td colspan="{{ teams.count }}">
                     <header>
                         <div class="graybox">
+                            <h3>Program Management</h3>
                             {{# programManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
                         </div>
                         <h1>iPraktikum 2016</h1>
                         <div class="graybox">
+                            <h3>Infrastructure</h3>
                             {{# infraManagers }}<p><img src="{{ imagePath }}"><span><span class="pm">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
                         </div>
                     </header>
