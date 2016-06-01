@@ -40,7 +40,7 @@ h3 {
     font-weight: 500;
 }
 
-img, span.img {
+img, span.face {
     height: 60px;
 }
 
@@ -89,12 +89,12 @@ p > span.caption {
     margin-left: 70px;
 }
 
-p > span.img {
+p > span.face {
     position: absolute;
     padding: 2px;
 }
 
-p > span.img::before {
+p > span.face::before {
     content: "";
     position: absolute;
     top: 0;
@@ -200,7 +200,7 @@ tbody tr.team td:nth-child({{ @indexPlusOne }}) p {
     width: calc(100%/2 - 20px);
 }
 {{/ twoColumns }}
-tbody td:nth-child({{ @indexPlusOne }}) p > span.img::before {
+tbody td:nth-child({{ @indexPlusOne }}) p > span.face::before {
     border: 2px solid rgba({{ color }}, .75);
 }
 tbody td:nth-child({{ @indexPlusOne }})::before {

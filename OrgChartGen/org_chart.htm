@@ -10,12 +10,12 @@
                     <header>
                         <div class="graybox pm">
                             <h3>Program Management</h3>
-                            {{# programManagers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
+                            {{# programManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
                         </div>
                         <h1>iPraktikum 2016</h1>
                         <div class="graybox infra">
                             <h3>Infrastructure</h3>
-                            {{# infraManagers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
+                            {{# infraManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
                         </div>
                     </header>
                 </td>
@@ -26,7 +26,7 @@
             <tr class="customer">
                 {{# teams }}
                 <td>
-                    {{# customers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ customers }}
+                    {{# customers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ customers }}
                 </td>
                 {{/ teams }}
             </tr>
@@ -34,47 +34,47 @@
             <tr class="pl">
                 {{# teams }}
                 <td>
-                    {{# projectLeaders }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ projectLeaders }}
+                    {{# projectLeaders }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ projectLeaders }}
                 </td>
                 {{/ teams }}
             </tr>
             <tr class="coach">
                 {{# teams }}
                 <td>
-                    {{# coaches }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ coaches }}
+                    {{# coaches }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ coaches }}
                 </td>
                 {{/ teams }}
-                {{# crossProject.coaches }}<td><p><span class="img"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ crossProject.coaches }}<td class="overlay"><span class="graybox"><h3>Coach<br>Instructors</h3></span></td>
+                {{# crossProject.coaches }}<td><p><span class="face"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ crossProject.coaches }}<td class="overlay"><span class="graybox"><h3>Coach<br>Instructors</h3></span></td>
             </tr>
             <tr>{{# teams }}<td><h2>Development Team</h2></td>{{/ teams }}<td class="overlay"><h2>Cross-functional Teams</h2></td></tr>
             <tr class="crossfunctional">
                 {{# teams }}
                 <td>
-                    {{# modelingManagers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ modelingManagers }}
+                    {{# modelingManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ modelingManagers }}
                 </td>
                 {{/ teams }}
-                {{# each(crossProject.modelingManagers) }}<td class="cf{{ @indexPlusOne }}"><p><span class="img"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ each(crossProject.modelingManagers) }}<td class="overlay"><span class="graybox"><h3>Modeling</h3></span></td>
+                {{# each(crossProject.modelingManagers) }}<td class="cf{{ @indexPlusOne }}"><p><span class="face"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ each(crossProject.modelingManagers) }}<td class="overlay"><span class="graybox"><h3>Modeling</h3></span></td>
             </tr>
             <tr class="crossfunctional">
                 {{# teams }}
                 <td>
-                    {{# mergeManagers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ mergeManagers }}
+                    {{# mergeManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ mergeManagers }}
                 </td>
                 {{/ teams }}
-                {{# each(crossProject.mergeManagers) }}<td class="cf{{ @indexPlusOne }}"><p><span class="img"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ each(crossProject.mergeManagers) }}<td class="overlay"><span class="graybox"><h3>Merge<br>Management</h3></span></td>
+                {{# each(crossProject.mergeManagers) }}<td class="cf{{ @indexPlusOne }}"><p><span class="face"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ each(crossProject.mergeManagers) }}<td class="overlay"><span class="graybox"><h3>Merge<br>Management</h3></span></td>
             </tr>
             <tr class="crossfunctional">
                 {{# teams }}
                 <td>
-                    {{# releaseManagers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ releaseManagers }}
+                    {{# releaseManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ releaseManagers }}
                 </td>
                 {{/ teams }}
-                {{# each(crossProject.releaseManagers) }}<td class="cf{{ @indexPlusOne }}"><p><span class="img"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ each(crossProject.releaseManagers) }}<td class="overlay"><span class="graybox"><h3>Release<br>Management</h3></span></td>
+                {{# each(crossProject.releaseManagers) }}<td class="cf{{ @indexPlusOne }}"><p><span class="face"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p></td>{{/ each(crossProject.releaseManagers) }}<td class="overlay"><span class="graybox"><h3>Release<br>Management</h3></span></td>
             </tr>
             <tr class="team">
                 {{# teams }}
                 <td>
-                    {{# teamMembers }}<p><span class="img"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p>{{/ teamMembers }}
+                    {{# teamMembers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption name">{{ name }}</span></p>{{/ teamMembers }}
                 </td>
                 {{/ teams }}
             </tr>
