@@ -140,7 +140,7 @@ class HTMLGenerator {
     
     func genPalette(noColors: Int) -> [String] {
         return (0..<noColors).map { i in
-            let color = NSColor(deviceHue: CGFloat(i)/CGFloat(noColors), saturation: 0.4, brightness: 1.0, alpha: 1.0)
+            let color = NSColor(deviceHue: CGFloat(i)/CGFloat(noColors), saturation: 0.45, brightness: 1.0, alpha: 1.0)
             return "\(Int(round(color.redComponent * 255))),\(Int(round(color.greenComponent * 255))),\(Int(round(color.blueComponent * 255)))"
         }
     }
