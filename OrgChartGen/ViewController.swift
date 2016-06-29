@@ -9,6 +9,7 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    @IBOutlet weak var pathField: NSTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,23 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func selectPath(sender: NSButton) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = false
+        
+        if openPanel.runModal() == NSModalResponseOK,
+            let path = openPanel.URLs.first?.path {
+            pathField.stringValue = path
+        }
+    }
+    
+    @IBAction func generate(sender: NSButton) {
+        sender.enabled = false
+        Renderer.render(pathField.stringValue) {
+            sender.enabled = true
+        }
+    }
 
 }
 

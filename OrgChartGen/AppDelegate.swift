@@ -10,31 +10,20 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    var renderer: PDFRenderer!
+    
+    var inPath: String?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
-        
-        let inPath: String
-        inPath = Process.arguments[1]
-        /*switch Process.arguments.count {
-        case 2:
-            inPath = Process.arguments[1]
-            break
-        default:
-            print("Usage: \(Process.arguments[0]) path")
-            exit(-1)
-        }*/
-        
-        let inURL = NSURL(fileURLWithPath: inPath, isDirectory: true)
-        let htmlURL = inURL.URLByAppendingPathComponent("org_chart.htm")
-        HTMLGenerator(inURL).generate(to: htmlURL)
-        
-        renderer = PDFRenderer()
-        renderer.render(htmlURL, to: inURL.URLByAppendingPathComponent("org_chart.pdf")) {
-            exit(0)
+
+        if Process.arguments.count > 1 {
+            let inPath = Process.arguments[1]
+            self.inPath = inPath
+            
+            Renderer.render(inPath) {
+                exit(0)
+            }
         }
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
