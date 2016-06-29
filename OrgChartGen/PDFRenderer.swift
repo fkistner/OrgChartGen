@@ -11,6 +11,8 @@ import WebKit
 
 class PDFRenderer: NSObject, WebFrameLoadDelegate {
     
+    static var shared = PDFRenderer()
+    
     let webView: WebView
     var callback: (NSData -> ())?
     
