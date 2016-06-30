@@ -44,6 +44,10 @@ img, span.face {
     height: 60px;
 }
 
+span.face img {
+    width: 60px;
+}
+
 table {
     border-spacing: 20px 0;
     margin: 20px 0;

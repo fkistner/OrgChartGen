@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="logo">{{# teams }}<td><img src="{{ logo.path }}" style="{{# logoScale(logo, 200, 40) }}height: calc(40px * {{ heightScale }}); width: calc(100% * {{ widthScale }} - 60px * {{ widthScale }});{{/ logoScale(logo, 200, 40) }}"></td>{{/ teams }}</tr>
+            <tr class="logo">{{# teams }}<td>{{# logo }}<img src="{{ path }}" style="{{# logoScale(., 200, 40) }}height: calc(40px * {{ heightScale }}); width: calc(100% * {{ widthScale }} - 60px * {{ widthScale }});{{/ logoScale(., 200, 40) }}">{{/ logo }}</td>{{/ teams }}</tr>
             <tr class="customer">
                 {{# teams }}
                 <td>
