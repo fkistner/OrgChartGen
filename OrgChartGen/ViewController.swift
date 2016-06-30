@@ -11,18 +11,6 @@ import Cocoa
 class ViewController: NSViewController {
     @IBOutlet weak var pathField: NSTextField!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
     @IBAction func selectPath(sender: NSButton) {
         let openPanel = NSOpenPanel()
         openPanel.canChooseDirectories = true
@@ -40,6 +28,5 @@ class ViewController: NSViewController {
             sender.enabled = true
         }
     }
-
 }
 

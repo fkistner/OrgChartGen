@@ -8,11 +8,19 @@
 
 import Foundation
 
-class Renderer {
+final class Renderer {
     class func render(inPath: String, callback: (() -> ())? = nil) {
         let inURL = NSURL(fileURLWithPath: inPath, isDirectory: true)
         let htmlURL = inURL.URLByAppendingPathComponent("org_chart.htm")
-        HTMLGenerator(inURL).generate(to: htmlURL)
+        
+        let enumerator = OrgChartEnumerator(inURL)
+        let input = enumerator.enumerateAll()
+        
+        let generator = HTMLGenerator(teams:           input.teams,
+                                      programManagers: input.programManagers,
+                                      infraManagers:   input.infraManagers,
+                                      crossProject:    input.crossProject)
+        generator.generate(to: htmlURL)
         
         PDFRenderer.shared.render(htmlURL, to: inURL.URLByAppendingPathComponent("org_chart.pdf")) {
             callback?()

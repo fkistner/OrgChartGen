@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		172CBEF31CF742CC00EEE433 /* HTMLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172CBEF21CF742CB00EEE433 /* HTMLGenerator.swift */; };
+		1733438C1D25234800FF6D1C /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1733438B1D25234800FF6D1C /* Part.swift */; };
+		17BBF1051D2523F100BFF971 /* OrgChartEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BBF1041D2523F100BFF971 /* OrgChartEnumerator.swift */; };
 		17BE3A6A1D23B2D00022C08D /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE3A691D23B2D00022C08D /* Renderer.swift */; };
 		17CD7E081CFC540A005FC08B /* PDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD7E071CFC540A005FC08B /* PDFRenderer.swift */; };
 		17CF8AF51CF52B9E0057312D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8AF41CF52B9E0057312D /* AppDelegate.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		172CBEF21CF742CB00EEE433 /* HTMLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLGenerator.swift; sourceTree = "<group>"; };
+		1733438B1D25234800FF6D1C /* Part.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
+		17BBF1041D2523F100BFF971 /* OrgChartEnumerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgChartEnumerator.swift; sourceTree = "<group>"; };
 		17BE3A691D23B2D00022C08D /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		17CD7E071CFC540A005FC08B /* PDFRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFRenderer.swift; sourceTree = "<group>"; };
 		17CF8AF11CF52B9E0057312D /* OrgChartGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrgChartGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				17CF8B041CF52CD20057312D /* Team.swift */,
+				1733438B1D25234800FF6D1C /* Part.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 				172CBEF21CF742CB00EEE433 /* HTMLGenerator.swift */,
 				17CD7E071CFC540A005FC08B /* PDFRenderer.swift */,
 				17BE3A691D23B2D00022C08D /* Renderer.swift */,
+				17BBF1041D2523F100BFF971 /* OrgChartEnumerator.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 			files = (
 				17CF8B061CF52CD20057312D /* Team.swift in Sources */,
 				172CBEF31CF742CC00EEE433 /* HTMLGenerator.swift in Sources */,
+				1733438C1D25234800FF6D1C /* Part.swift in Sources */,
+				17BBF1051D2523F100BFF971 /* OrgChartEnumerator.swift in Sources */,
 				17CF8AF71CF52B9E0057312D /* ViewController.swift in Sources */,
 				17CD7E081CFC540A005FC08B /* PDFRenderer.swift in Sources */,
 				17BE3A6A1D23B2D00022C08D /* Renderer.swift in Sources */,

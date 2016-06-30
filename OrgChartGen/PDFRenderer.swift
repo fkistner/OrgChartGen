@@ -10,7 +10,6 @@ import Foundation
 import WebKit
 
 class PDFRenderer: NSObject, WebFrameLoadDelegate {
-    
     static var shared = PDFRenderer()
     
     let webView: WebView

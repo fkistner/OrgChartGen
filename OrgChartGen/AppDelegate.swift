@@ -10,11 +10,9 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     var inPath: String?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-
         if Process.arguments.count > 1 {
             let inPath = Process.arguments[1]
             self.inPath = inPath
@@ -25,10 +23,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
-    }
-
 }
 
