@@ -26,4 +26,5 @@ under this license:
 -   The templates `org_chart.css` and `org_chart.htm`  
     (Copyright by LS1, TU München)
 
--   GRMustache.swift (MIT, see readme file for details)
+-   [GRMustache.swift](https://github.com/groue/GRMustache.swift/) (MIT, see
+    readme file for details)

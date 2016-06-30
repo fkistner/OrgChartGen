@@ -66,6 +66,6 @@ The output is written to the input directory.
 
 ### Dependencies
 
--   [GRMustache.swift], 1.0.1  
+-   [GRMustache.swift, 1.0.1](https://github.com/groue/GRMustache.swift/)  
     MIT  
     *via CocoaPods*
