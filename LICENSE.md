@@ -1,4 +1,4 @@
-OrgChartGen is licensed under the MIT license. See below for exceptions.
+OrgChartGen is licensed under the MIT License. See below for exceptions.
 
 >   Copyright © 2016 Florian Kistner
 
