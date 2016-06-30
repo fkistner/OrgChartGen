@@ -20,11 +20,11 @@ struct OrgChartEnumerator {
     let baseURL: NSURL
     let baseComponents: [String]
     
+    let logosURL: NSURL
     let picturesTeamsURL: NSURL
     let picturesProgramManagersURL: NSURL
     let picturesInfraManagersURL: NSURL
     let picturesCrossProjectURL: NSURL
-    let logosURL: NSURL
     
     func shouldUseTwoColumns(parts: [Part:[Member]]) -> Bool {
         return parts[.Team]?.count > 4
@@ -33,11 +33,13 @@ struct OrgChartEnumerator {
     init(_ inURL: NSURL) {
         baseURL = inURL
         baseComponents = baseURL.pathComponents ?? []
-        picturesTeamsURL = inURL.URLByAppendingPathComponent("pictures/Teams")
-        picturesProgramManagersURL = inURL.URLByAppendingPathComponent("pictures/Program Management")
-        picturesInfraManagersURL = inURL.URLByAppendingPathComponent("pictures/Infrastructure")
-        picturesCrossProjectURL = inURL.URLByAppendingPathComponent("pictures/Cross Project")
-        logosURL = inURL.URLByAppendingPathComponent("logos")
+        logosURL = inURL.URLByAppendingPathComponent("CustomerLogos")
+        
+        let picturesURL = inURL.URLByAppendingPathComponent("Pictures")
+        picturesTeamsURL = picturesURL.URLByAppendingPathComponent("Teams")
+        picturesProgramManagersURL = picturesURL.URLByAppendingPathComponent("Program Management")
+        picturesInfraManagersURL = picturesURL.URLByAppendingPathComponent("Infrastructure")
+        picturesCrossProjectURL = picturesURL.URLByAppendingPathComponent("Cross Project")
     }
     
     func enumerateAll() -> (teams: [Team], programManagers: [Member], infraManagers: [Member], crossProject: Team) {
