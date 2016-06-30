@@ -9,17 +9,19 @@
 import Foundation
 
 final class Renderer {
-    class func render(inPath: String, callback: (() -> ())? = nil) {
+    class func render(inPath: String, version: String? = nil, callback: (() -> ())? = nil) {
         let inURL = NSURL(fileURLWithPath: inPath, isDirectory: true)
         let htmlURL = inURL.URLByAppendingPathComponent("org_chart.htm")
         
         let enumerator = OrgChartEnumerator(inURL)
         let input = enumerator.enumerateAll()
         
-        let generator = HTMLGenerator(teams:           input.teams,
+        let generator = HTMLGenerator(title:           input.title,
+                                      teams:           input.teams,
                                       programManagers: input.programManagers,
                                       infraManagers:   input.infraManagers,
-                                      crossProject:    input.crossProject)
+                                      crossProject:    input.crossProject,
+                                      version:         version)
         generator.generate(to: htmlURL)
         
         PDFRenderer.shared.render(htmlURL, to: inURL.URLByAppendingPathComponent("org_chart.pdf")) {

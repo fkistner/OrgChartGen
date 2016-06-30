@@ -1,6 +1,4 @@
 * {
-	font-family: "Helvetica Neue", "Helvetica";
-	font-size: 13pt;
     margin: 0;
     padding: 0;
     word-wrap: break-word;
@@ -9,6 +7,8 @@
 body {
     position: relative;
     display: inline-block;
+    font-family: "Helvetica Neue", "Helvetica";
+    font-size: 13pt;
 }
 
 thead td {

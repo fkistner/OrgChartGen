@@ -10,14 +10,14 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var inPath: String?
-    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         if Process.arguments.count > 1 {
             let inPath = Process.arguments[1]
-            self.inPath = inPath
+            let version: String? = Process.arguments.count > 2
+                ? Process.arguments[2]
+                : nil
             
-            Renderer.render(inPath) {
+            Renderer.render(inPath, version: version) {
                 exit(0)
             }
         }

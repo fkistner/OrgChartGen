@@ -42,7 +42,8 @@ struct OrgChartEnumerator {
         picturesCrossProjectURL = picturesURL.URLByAppendingPathComponent("Cross Project")
     }
     
-    func enumerateAll() -> (teams: [Team], programManagers: [Member], infraManagers: [Member], crossProject: Team) {
+    func enumerateAll() -> (title: String, teams: [Team], programManagers: [Member], infraManagers: [Member], crossProject: Team) {
+        let title = extractName(baseURL.lastPathComponent!).name
         let teams = enumerateTeams(picturesTeamsURL, logosURL: logosURL)
         let programManagers = enumerateMembers(picturesProgramManagersURL, defaultRole: "Program Manager")
         let infraManagers = enumerateMembers(picturesInfraManagersURL, defaultRole: nil)
@@ -53,7 +54,7 @@ struct OrgChartEnumerator {
             teams[i].color = color
         }
         
-        return (teams: teams, programManagers: programManagers, infraManagers: infraManagers, crossProject: crossProject)
+        return (title: title, teams: teams, programManagers: programManagers, infraManagers: infraManagers, crossProject: crossProject)
     }
     
     func genPalette(noColors: Int) -> [String] {

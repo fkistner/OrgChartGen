@@ -12,7 +12,7 @@
                             <h3>Program Management</h3>
                             {{# programManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ programManagers }}
                         </div>
-                        <h1>iPraktikum 2016</h1>
+                        <h1>{{# title }}{{.}}{{/ title }}{{^ title }}iPraktikum{{/ title}}</h1>
                         <div class="graybox infra">
                             <h3>Infrastructure</h3>
                             {{# infraManagers }}<p><span class="face"><img src="{{ imagePath }}"></span><span class="caption"><span class="name">{{ name }}</span>{{# roles }}<br>{{.}}{{/ roles }}</span></p>{{/ infraManagers }}
@@ -80,4 +80,5 @@
             </tr>
         </tbody>
     </table>
+    {{# version }}<pre style="text-align: right">Version: {{.}}</pre>{{/ version }}
 </body>

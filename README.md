@@ -4,6 +4,11 @@ OrgChartGen
 Generate an iPraktikum-style OrgChart from the given directory structure, i.e.
 using “Convention over Configuration.”
 
+### Usage
+
+`OrgChartGen.app/Contents/MacOS/OrgChartGen [path] [version]`  
+If no arguments are passed, a GUI will be presented.
+
 ### Concepts
 
 The file name of an image without extension specifies its caption.  

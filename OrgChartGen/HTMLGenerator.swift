@@ -12,12 +12,14 @@ import Mustache
 struct HTMLGenerator {
     let box: MustacheBox
     
-    init(teams: [Team], programManagers: [Member], infraManagers: [Member], crossProject: Team) {
+    init(title: String, teams: [Team], programManagers: [Member], infraManagers: [Member], crossProject: Team, version: String? = nil) {
         box = Box([
+            "title": title,
             "teams": teams,
             "programManagers": programManagers,
             "infraManagers": infraManagers,
-            "crossProject": crossProject
+            "crossProject": crossProject,
+            "version": version ?? ""
         ])
     }
     
