@@ -6,7 +6,7 @@ using “Convention over Configuration.”
 
 ### Usage
 
-`OrgChartGen.app/Contents/MacOS/OrgChartGen [path] [version]`  
+`OrgChartGen.app/Contents/MacOS/OrgChartGen [-path PATH] [-version VERSION]`  
 If no arguments are passed, a GUI will be presented.
 
 ### Concepts

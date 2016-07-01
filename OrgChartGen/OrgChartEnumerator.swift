@@ -89,7 +89,7 @@ struct OrgChartEnumerator {
     private func enumerateFs<T where T: Initializable>(url: NSURL, descend: Bool = false, action: (T,NSURL) -> T) -> T {
         let relativeComponents = resolveRelativeComponents(url.pathComponents!)
         let memberEnumerator = NSFileManager.defaultManager()
-            .enumeratorAtURL(url, includingPropertiesForKeys: [NSURLIsDirectoryKey], options: [.SkipsHiddenFiles, .SkipsSubdirectoryDescendants], errorHandler: nil)
+            .enumeratorAtURL(url, includingPropertiesForKeys: [NSURLIsDirectoryKey], options: [.SkipsHiddenFiles, .SkipsSubdirectoryDescendants], errorHandler: { url,error in print(error.localizedDescription); return true })
         
         return memberEnumerator?.reduce(T()) { members,memberURL in
             let memberURL = memberURL as! NSURL
