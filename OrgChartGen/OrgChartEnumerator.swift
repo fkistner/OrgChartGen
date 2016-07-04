@@ -47,7 +47,7 @@ struct OrgChartEnumerator {
         let teams = enumerateTeams(picturesTeamsURL, logosURL: logosURL)
         let programManagers = enumerateMembers(picturesProgramManagersURL, defaultRole: "Program Manager")
         let infraManagers = enumerateMembers(picturesInfraManagersURL, defaultRole: nil)
-        let crossProject = teamFromURL(picturesCrossProjectURL, logos: [:])
+        let crossProject = enumerateTeam(picturesCrossProjectURL)
         
         let colors = genPalette(teams.count)
         for (i,color) in colors.enumerate() {
@@ -138,31 +138,39 @@ struct OrgChartEnumerator {
         }
     }
     
-    func teamFromURL(teamURL: NSURL, logos: [String: Logo]) -> Team {
+    func enumerateTeam(teamURL: NSURL, logos: [String: Logo] = [:]) -> Team {
         let name = self.extractName(teamURL.lastPathComponent!).name
         let parts = self.enumerateParts(teamURL, teamName: name)
         return Team(name: name,
                     logo: logos[name],
                     twoColumns: shouldUseTwoColumns(parts),
-                    customers:        parts[.Customer] ?? [],
-                    projectLeaders:   parts[.ProjectLeader] ?? [],
-                    coaches:          parts[.Coach] ?? [],
-                    modelingManagers: parts[.Modeling] ?? [],
-                    releaseManagers:  parts[.ReleaseMgmt] ?? [],
-                    mergeManagers:    parts[.MergeMgmt] ?? [],
-                    teamMembers:      parts[.Team] ?? [])
+                    customers:        parts[.Customer],
+                    projectLeaders:   parts[.ProjectLeader],
+                    coaches:          parts[.Coach],
+                    modelingManagers: parts[.Modeling],
+                    releaseManagers:  parts[.ReleaseMgmt],
+                    mergeManagers:    parts[.MergeMgmt],
+                    teamMembers:      parts[.Team])
     }
     
     func enumerateTeams(teamsURL: NSURL, logosURL: NSURL) -> [Team] {
-        let logos = enumerateLogos(logosURL)
-        return enumerateFs(teamsURL) { (teams: [Team], teamURL: NSURL) in
+        var logos = enumerateLogos(logosURL)
+        var teams = enumerateFs(teamsURL) { (teams: [Team], teamURL: NSURL) in
             if teamURL.hasDirectoryPath {
                 var teams = teams
-                let team = self.teamFromURL(teamURL, logos: logos)
+                let team = self.enumerateTeam(teamURL, logos: logos)
                 teams.append(team)
                 return teams
             }
             return teams
         }
+        for team in teams {
+            logos.removeValueForKey(team.name)
+        }
+        for (name,logo) in logos {
+            teams.append(Team(name: name, logo: logo))
+        }
+        teams.sortInPlace { a,b in a.name < b.name }
+        return teams
     }
 }

@@ -21,17 +21,17 @@ class Team {
     let mergeManagers: [Member]
     let teamMembers: [Member]
     
-    init(name: String, logo: Logo?, twoColumns: Bool, customers: [Member], projectLeaders: [Member], coaches: [Member], modelingManagers: [Member], releaseManagers: [Member], mergeManagers: [Member], teamMembers: [Member]) {
+    init(name: String, logo: Logo?, twoColumns: Bool = false, customers: [Member]? = nil, projectLeaders: [Member]? = nil, coaches: [Member]? = nil, modelingManagers: [Member]? = nil, releaseManagers: [Member]? = nil, mergeManagers: [Member]? = nil, teamMembers: [Member]? = nil) {
         self.name = name
         self.logo = logo
         self.twoColumns = twoColumns
-        self.customers = customers
-        self.projectLeaders = projectLeaders
-        self.coaches = coaches
-        self.modelingManagers = modelingManagers
-        self.releaseManagers = releaseManagers
-        self.mergeManagers = mergeManagers
-        self.teamMembers = teamMembers
+        self.customers = customers ?? []
+        self.projectLeaders = projectLeaders ?? []
+        self.coaches = coaches ?? []
+        self.modelingManagers = modelingManagers ?? []
+        self.releaseManagers = releaseManagers ?? []
+        self.mergeManagers = mergeManagers ?? []
+        self.teamMembers = teamMembers ?? []
     }
 }
 
