@@ -58,7 +58,6 @@ tbody td {
 	padding: 10px 5px;
     padding-left: 8px;
     vertical-align: top;
-    text-align: center;
 }
 
 tbody td::before {
@@ -74,7 +73,6 @@ tbody td::before {
 p {
     display: inline-block;
     vertical-align: middle;
-    text-align: left;
     width: calc(100% - 10px);
     height: 60px;
     padding: 10px 5px;
