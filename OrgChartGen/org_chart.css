@@ -121,6 +121,7 @@ tr.logo td {
     padding-bottom: 10px !important;
     padding-left: 3px !important;
     vertical-align: middle;
+    text-align: center;
 }
 
 tr.logo td::before {
