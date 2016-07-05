@@ -144,7 +144,7 @@ struct OrgChartEnumerator {
         let parts = self.enumerateParts(teamURL, teamName: name)
         return Team(id: id,
                     name: name,
-                    logo: logos[name],
+                    logo: logos[id],
                     twoColumns: shouldUseTwoColumns(parts),
                     customers:        parts[.Customer],
                     projectLeaders:   parts[.ProjectLeader],
