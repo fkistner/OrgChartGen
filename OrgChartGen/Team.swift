@@ -9,6 +9,7 @@
 import Mustache
 
 class Team {
+    let id: String
     let name: String
     let logo: Logo?
     var color: String?
@@ -21,7 +22,8 @@ class Team {
     let mergeManagers: [Member]
     let teamMembers: [Member]
     
-    init(name: String, logo: Logo?, twoColumns: Bool = false, customers: [Member]? = nil, projectLeaders: [Member]? = nil, coaches: [Member]? = nil, modelingManagers: [Member]? = nil, releaseManagers: [Member]? = nil, mergeManagers: [Member]? = nil, teamMembers: [Member]? = nil) {
+    init(id: String, name: String, logo: Logo?, twoColumns: Bool = false, customers: [Member]? = nil, projectLeaders: [Member]? = nil, coaches: [Member]? = nil, modelingManagers: [Member]? = nil, releaseManagers: [Member]? = nil, mergeManagers: [Member]? = nil, teamMembers: [Member]? = nil) {
+        self.id = id
         self.name = name
         self.logo = logo
         self.twoColumns = twoColumns

@@ -103,8 +103,8 @@ struct OrgChartEnumerator {
         return enumerateFs(logosURL) { (logos: [String: Logo], logoURL: NSURL) in
             if !logoURL.hasDirectoryPath {
                 var logos = logos
-                let name = self.extractName(logoURL.URLByDeletingPathExtension!.lastPathComponent!)
-                logos[name.name] = Logo(url: logoURL)
+                let id = logoURL.URLByDeletingPathExtension!.lastPathComponent!
+                logos[id] = Logo(url: logoURL)
                 return logos
             }
             return logos
@@ -139,9 +139,11 @@ struct OrgChartEnumerator {
     }
     
     func enumerateTeam(teamURL: NSURL, logos: [String: Logo] = [:]) -> Team {
-        let name = self.extractName(teamURL.lastPathComponent!).name
+        let id = teamURL.lastPathComponent!
+        let name = self.extractName(id).name
         let parts = self.enumerateParts(teamURL, teamName: name)
-        return Team(name: name,
+        return Team(id: id,
+                    name: name,
                     logo: logos[name],
                     twoColumns: shouldUseTwoColumns(parts),
                     customers:        parts[.Customer],
@@ -165,12 +167,13 @@ struct OrgChartEnumerator {
             return teams
         }
         for team in teams {
-            logos.removeValueForKey(team.name)
+            logos.removeValueForKey(team.id)
         }
-        for (name,logo) in logos {
-            teams.append(Team(name: name, logo: logo))
+        for (id,logo) in logos {
+            let name = self.extractName(id).name
+            teams.append(Team(id: id, name: name, logo: logo))
         }
-        teams.sortInPlace { a,b in a.name < b.name }
+        teams.sortInPlace { a,b in a.id < b.id }
         return teams
     }
 }
