@@ -15,11 +15,11 @@ The file name of an image without extension specifies its caption.
 If the file name contains an underscore `_`, everything before the first `_` is
 ignored and can therefore be used to specify an order via a sequence number.  
 If the file name contains more than one `_`, the text after the second `_` may
-be used as caption override, where appropriate. Additional `_` trigger line
+be used as subcaption override, where appropriate. Additional `_` trigger line
 breaks.
 
-Directory names are taken is, except for team directory names which also support
-the `_`.
+Directory names are taken as is, except for team directory names which also
+support the `_`.
 
 ### Folder structure
 
