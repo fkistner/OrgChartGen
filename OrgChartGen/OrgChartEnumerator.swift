@@ -33,13 +33,13 @@ struct OrgChartEnumerator {
     init(_ inURL: NSURL) {
         baseURL = inURL
         baseComponents = baseURL.pathComponents ?? []
-        logosURL = inURL.URLByAppendingPathComponent("CustomerLogos")
+        logosURL = inURL.URLByAppendingPathComponent("CustomerLogos")!
         
         let picturesURL = inURL.URLByAppendingPathComponent("Pictures")
-        picturesTeamsURL = picturesURL.URLByAppendingPathComponent("Teams")
-        picturesProgramManagersURL = picturesURL.URLByAppendingPathComponent("Program Management")
-        picturesInfraManagersURL = picturesURL.URLByAppendingPathComponent("Infrastructure")
-        picturesCrossProjectURL = picturesURL.URLByAppendingPathComponent("Cross Project")
+        picturesTeamsURL = picturesURL!.URLByAppendingPathComponent("Teams")!
+        picturesProgramManagersURL = picturesURL!.URLByAppendingPathComponent("Program Management")!
+        picturesInfraManagersURL = picturesURL!.URLByAppendingPathComponent("Infrastructure")!
+        picturesCrossProjectURL = picturesURL!.URLByAppendingPathComponent("Cross Project")!
     }
     
     func enumerateAll() -> (title: String, teams: [Team], programManagers: [Member], infraManagers: [Member], crossProject: Team) {
@@ -117,7 +117,7 @@ struct OrgChartEnumerator {
                 var members = members
                 let name = self.extractName(memberURL.URLByDeletingPathExtension!.lastPathComponent!)
                 let roles = name.roles ?? defaultRole.flatMap{ [$0] } ?? []
-                let member = Member(name: name.name, roles: roles, imagePath: memberURL.relativeString!)
+                let member = Member(name: name.name, roles: roles, imagePath: memberURL.relativeString)
                 members.append(member)
                 return members
             }

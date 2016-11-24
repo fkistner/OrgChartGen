@@ -22,9 +22,9 @@ final class Renderer {
                                       infraManagers:   input.infraManagers,
                                       crossProject:    input.crossProject,
                                       version:         version)
-        generator.generate(to: htmlURL)
+        generator.generate(to: htmlURL!)
         
-        PDFRenderer.shared.render(htmlURL, to: inURL.URLByAppendingPathComponent("org_chart.pdf")) {
+        PDFRenderer.shared.render(htmlURL!, to: inURL.URLByAppendingPathComponent("org_chart.pdf")!) {
             callback?()
         }
     }

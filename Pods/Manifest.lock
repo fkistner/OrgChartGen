@@ -1,12 +1,12 @@
 PODS:
-  - GRMustache.swift (1.0.1)
+  - GRMustache.swift (1.1.0)
 
 DEPENDENCIES:
   - GRMustache.swift (~> 1.0)
 
 SPEC CHECKSUMS:
-  GRMustache.swift: 36a9a277311f6492b7b2c50b0458812df06899a4
+  GRMustache.swift: 6bc0a640ddc833e38a05d02fe9ed8b6c98491989
 
 PODFILE CHECKSUM: 964c4b3955c4f33481dc08b8d0c27adeb2b85da1
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

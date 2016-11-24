@@ -17,7 +17,7 @@ class Logo {
     
     init(url: NSURL) {
         let image = NSImage(byReferencingURL: url)
-        self.path = url.relativeString!
+        self.path = url.relativeString
         width = Int(round(image.size.width))
         height = Int(round(image.size.height))
         diagonal = sqrt(Float(width) * Float(width) + Float(height) * Float(height))

@@ -41,7 +41,7 @@ struct HTMLGenerator {
         htmlRendered
             .dataUsingEncoding(NSUTF8StringEncoding)?
             .writeToURL(htmlURL, atomically: false)
-        let cssURL = htmlURL.URLByDeletingPathExtension!.URLByAppendingPathExtension("css")
+        let cssURL = htmlURL.URLByDeletingPathExtension!.URLByAppendingPathExtension("css")!
         cssRendered
             .dataUsingEncoding(NSUTF8StringEncoding)?
             .writeToURL(cssURL, atomically: false)
