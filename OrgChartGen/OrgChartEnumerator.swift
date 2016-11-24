@@ -27,7 +27,7 @@ struct OrgChartEnumerator {
     let picturesCrossProjectURL: NSURL
     
     func shouldUseTwoColumns(parts: [Part:[Member]]) -> Bool {
-        return parts[.Team]?.count > 4
+        return parts[.Team]?.count > 5
     }
     
     init(_ inURL: NSURL) {
