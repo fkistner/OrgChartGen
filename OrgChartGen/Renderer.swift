@@ -9,11 +9,11 @@
 import Foundation
 
 final class Renderer {
-    class func render(inPath: String, version: String? = nil, callback: (() -> ())? = nil) {
-        let inURL = NSURL(fileURLWithPath: inPath, isDirectory: true)
-        let htmlURL = inURL.URLByAppendingPathComponent("org_chart.htm")
+    class func render(path inPath: String, version: String? = nil, callback: (() -> ())? = nil) {
+        let inURL = URL(fileURLWithPath: inPath, isDirectory: true)
+        let htmlURL = inURL.appendingPathComponent("org_chart.htm")
         
-        let enumerator = OrgChartEnumerator(inURL)
+        let enumerator = OrgChartEnumerator(at: inURL)
         let input = enumerator.enumerateAll()
         
         let generator = HTMLGenerator(title:           input.title,
@@ -22,9 +22,9 @@ final class Renderer {
                                       infraManagers:   input.infraManagers,
                                       crossProject:    input.crossProject,
                                       version:         version)
-        generator.generate(to: htmlURL!)
+        generator.generate(to: htmlURL)
         
-        PDFRenderer.shared.render(htmlURL!, to: inURL.URLByAppendingPathComponent("org_chart.pdf")!) {
+        PDFRenderer.shared.render(url: htmlURL, to: inURL.appendingPathComponent("org_chart.pdf")) {
             callback?()
         }
     }

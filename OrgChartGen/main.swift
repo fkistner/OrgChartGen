@@ -9,16 +9,16 @@
 import Foundation
 import Cocoa
 
-let userDefaults = NSUserDefaults.standardUserDefaults()
+let userDefaults = UserDefaults.standard
 
-if let inPath = userDefaults.stringForKey("path") {
-    let version = userDefaults.stringForKey("version")
+if let inPath = userDefaults.string(forKey: "path") {
+    let version = userDefaults.string(forKey: "version")
     
-    Renderer.render(inPath, version: version) {
+    Renderer.render(path: inPath, version: version) {
         exit(0)
     }
     
-    NSRunLoop.mainRunLoop().run()
+    RunLoop.main.run()
 } else {
-    NSApplicationMain(Process.argc, Process.unsafeArgv)
+    exit(NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv))
 }

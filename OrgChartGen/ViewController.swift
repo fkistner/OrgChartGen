@@ -11,21 +11,21 @@ import Cocoa
 class ViewController: NSViewController {
     @IBOutlet weak var pathField: NSTextField!
 
-    @IBAction func selectPath(sender: NSButton) {
+    @IBAction func selectPath(_ sender: NSButton) {
         let openPanel = NSOpenPanel()
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = false
         
         if openPanel.runModal() == NSModalResponseOK,
-            let path = openPanel.URLs.first?.path {
+            let path = openPanel.urls.first?.path {
             pathField.stringValue = path
         }
     }
     
-    @IBAction func generate(sender: NSButton) {
-        sender.enabled = false
-        Renderer.render(pathField.stringValue) {
-            sender.enabled = true
+    @IBAction func generate(_ sender: NSButton) {
+        sender.isEnabled = false
+        Renderer.render(path: pathField.stringValue) {
+            sender.isEnabled = true
         }
     }
 }

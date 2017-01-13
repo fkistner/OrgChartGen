@@ -10,24 +10,24 @@ import Mustache
 
 class Logo {
     let path: String
-    let width: Int
-    let height: Int
-    let diagonal: Float
-    let ratio: Float
+    let width: CGFloat
+    let height: CGFloat
+    let diagonal: CGFloat
+    let ratio: CGFloat
     
-    init(url: NSURL) {
-        let image = NSImage(byReferencingURL: url)
+    init(url: URL) {
+        let image = NSImage(byReferencing: url)
         self.path = url.relativeString
-        width = Int(round(image.size.width))
-        height = Int(round(image.size.height))
-        diagonal = sqrt(Float(width) * Float(width) + Float(height) * Float(height))
-        ratio = Float(max(width, height)) / Float(min(width,height))
+        width = image.size.width
+        height = image.size.height
+        diagonal = sqrt(width * width + height * height)
+        ratio = max(width, height) / min(width, height)
     }
 }
 
 extension Logo : MustacheBoxable {
     var mustacheBox: MustacheBox {
-        let props: [String: AnyObject] = [
+        let props: [String: Any] = [
             "path": path,
             "width": width,
             "height": height,

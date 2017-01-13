@@ -39,7 +39,7 @@ class Team {
 
 extension Team : MustacheBoxable {
     var mustacheBox: MustacheBox {
-        var props: [String: AnyObject] = [
+        var props: [String: Any] = [
             "teamname": name,
             "twoColumns": twoColumns,
             "customers": customers,

@@ -13,7 +13,7 @@ class PDFRenderer: NSObject, WebFrameLoadDelegate {
     static var shared = PDFRenderer()
     
     let webView: WebView
-    var callback: (NSData -> ())?
+    var callback: ((Data) -> ())?
     
     override init() {
         self.webView = WebView()
@@ -23,18 +23,18 @@ class PDFRenderer: NSObject, WebFrameLoadDelegate {
         webView.preferences.shouldPrintBackgrounds = true
     }
     
-    func render(url: NSURL, to pdfURL: NSURL, callback: () -> ()) {
+    func render(url: URL, to pdfURL: URL, callback: @escaping () -> ()) {
         self.callback = { data in
-            data.writeToURL(pdfURL, atomically: true)
+            try! data.write(to: pdfURL, options: [.atomic])
             callback()
         }
-        webView.mainFrame.loadRequest(NSURLRequest(URL: url))
+        webView.mainFrame.load(URLRequest(url: url))
     }
     
-    func webView(sender: WebView!, didFinishLoadForFrame frame: WebFrame!) {
+    func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         if let callback = callback {
             let documentView = frame.frameView.documentView
-            callback(documentView.dataWithPDFInsideRect(documentView.frame))
+            callback((documentView?.dataWithPDF(inside: (documentView?.frame)!))!)
         }
     }
 }

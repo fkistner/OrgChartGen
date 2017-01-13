@@ -8,5 +8,5 @@ target 'OrgChartGen' do
   use_frameworks!
 
   # Pods for OrgChartGen
-  pod 'GRMustache.swift', '~> 1.0'
+  pod 'GRMustache.swift', '~> 2.0'
 end

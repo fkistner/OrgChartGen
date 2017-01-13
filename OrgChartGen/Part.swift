@@ -7,15 +7,15 @@
 //
 
 enum Part {
-    case Customer, ProjectLeader, Coach, Modeling, ReleaseMgmt, MergeMgmt, Team
+    case customer, projectLeader, coach, modeling, releaseMgmt, mergeMgmt, team
 }
 
 extension Part {
     var defaultRole: String? {
         switch self {
-        case .ProjectLeader:
+        case .projectLeader:
             return "Project Leader"
-        case .Coach:
+        case .coach:
             return "Team Coach"
         default:
             return nil
@@ -25,19 +25,19 @@ extension Part {
     init?(directoryName name: String) {
         switch name {
         case "1_Customer":
-            self = .Customer
+            self = .customer
         case "2_Project Leader":
-            self = .ProjectLeader
+            self = .projectLeader
         case "3_Coach":
-            self = .Coach
+            self = .coach
         case "4_Modeling":
-            self = .Modeling
+            self = .modeling
         case "5_Release Mgmt":
-            self = .ReleaseMgmt
+            self = .releaseMgmt
         case "6_Merge Mgmt":
-            self = .MergeMgmt
+            self = .mergeMgmt
         case "9_Team":
-            self = .Team
+            self = .team
         default:
             return nil
         }
